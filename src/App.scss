@@ -1,0 +1,1410 @@
+.App {
+  text-align: center;
+  background-image: url(./assets/Bg.jpg);
+  background-size: 100% 100%;
+  min-height: 100vh;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+$standardWidth: 750;
+@function calcView($pixels) {
+  @return (($pixels/$standardWidth) * 100) + vw;
+}
+@mixin textStroke($textColor, $strokeColor, $stroke) {
+  background-color: $textColor;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-stroke-width: $stroke;
+  -webkit-text-stroke-color: $strokeColor;
+  -webkit-text-fill-color: transparent;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.marque-container {
+  overflow: hidden;
+  width: 100%;
+  height: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7vw;
+  .marquee-alternative {
+    margin: auto;
+    margin-left: 3vw;
+    height: 17vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .taxts {
+      background-image: url(./assets/TickerTapeBase.png);
+      background-size: 100% 100%;
+      width: 108vw;
+      height: 14vw;
+      color: #fefffe;
+      font-size: 3vw;
+      margin-right: 8vw;
+      padding: 0 2vw 0 2vw;
+
+      .border-img {
+        width: 14vw;
+        height: 14vw;
+        z-index: 1;
+        left: -4vw;
+      }
+      .user-img {
+        width: 11vw;
+        height: 11vw;
+        left: -2.5vw;
+        border-radius: 50%;
+      }
+      .text {
+        .content {
+          margin-left: 7vw;
+          img {
+            width: 7vw;
+          }
+          .nick-name {
+            text-align: initial;
+            margin-right: 1vw;
+          }
+          .icon {
+            margin: 0 1vw;
+            width: 5vw;
+          }
+        }
+      }
+      span {
+        color: #fff300;
+        margin-left: 1vw;
+      }
+    }
+  }
+}
+.tab-buttons {
+  background-image: url(./assets/MainButtonsBase.png);
+  background-size: 100% 100%;
+  width: 90%;
+  height: 15vw;
+  img {
+    width: 20vw;
+    transition: all 0.2s ease;
+  }
+  .active {
+    background-image: url(./assets/SelectedMainButton.png);
+    background-size: 100% 100%;
+    width: 40%;
+    height: 17vw;
+    margin-top: -0.5vw;
+
+    img {
+      width: 20vw;
+      transition: all 0.2s ease;
+    }
+  }
+  .not-active {
+    width: 40%;
+    img {
+      width: 18vw;
+      filter: grayscale(1);
+      transition: all 0.2s ease;
+    }
+  }
+}
+.my-points {
+  background-image: url(./assets/MyGamePointsBase.png);
+  background-size: 100% 100%;
+  width: 70%;
+  height: 16vw;
+  font-size: 3.2vw;
+}
+.bingo-game {
+  background-image: url(./assets/BingoGameBg.png);
+  background-size: 100% 100%;
+  width: 95%;
+  height: 150vw;
+  padding-top: 10vw;
+  .info-text {
+    background-image: url(./assets/Info-Base.png);
+    background-size: 100% 100%;
+    width: 80%;
+    height: 10vw;
+    font-size: 3.5vw;
+  }
+  &-container {
+    background-image: url(./assets/BingoFrame.png);
+    background-size: 100% 100%;
+    width: 95%;
+    height: 110vw;
+  }
+  &-bottom {
+    width: 70%;
+    height: 15vw;
+    .chances {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: end;
+      width: 50%;
+      height: 15vw;
+      font-size: 2.5vw;
+      .input-field {
+        background: transparent;
+        background-image: url(./assets/SpeedBase.png);
+        background-size: 100% 100%;
+        width: 50%;
+        height: 8vw;
+        border: none;
+        color: white;
+        text-align: center;
+        &:focus {
+          outline: none;
+        }
+        &[type="number"]::-webkit-inner-spin-button,
+        &[type="number"]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+      .error {
+        margin: 0;
+        font-size: 2.5vw;
+      }
+    }
+    .play-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: end;
+      width: 50%;
+      height: 15vw;
+
+      cursor: pointer;
+      font-size: 2.5vw;
+      img {
+        width: 20vw;
+      }
+    }
+  }
+}
+.bingo-wins {
+  background-image: url(./assets/DailyBingoWinsBase.png);
+  background-size: 100% 100%;
+  width: 70%;
+  height: 13vw;
+  font-size: 3.2vw;
+}
+.rewards-box {
+  background-size: 100% 100%;
+  width: 95%;
+  height: 130vw;
+  .title {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 80%;
+    top: -1vw;
+  }
+  .beans-pot {
+    width: 100%;
+    font-size: 3vw;
+    .pot {
+      background-image: url(./assets/Reward-Base.png);
+      background-size: 100% 100%;
+      width: 38%;
+      height: 38vw;
+      span {
+        top: 4vw;
+        font-size: 3.2vw;
+      }
+      img {
+        width: 25vw;
+      }
+    }
+    .bean-num {
+      background-image: url(./assets/Layer.png);
+      background-size: 100% 100%;
+      width: 32vw;
+      height: 12vw;
+      img {
+        width: 6vw;
+      }
+    }
+  }
+  .rewards {
+    width: 100%;
+    .rewards-slider {
+      width: 100%;
+      height: 100%;
+      .sliderItem {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .carousel {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          .inner {
+            width: 100%;
+            height: 100%;
+            white-space: nowrap;
+            transition: transform 0s;
+          }
+          .slide-buttons {
+            top: 15vw;
+            justify-content: space-between;
+            width: 75%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            img {
+              width: 6vw;
+            }
+          }
+        }
+        .carousel-item {
+          display: inline-flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          position: relative;
+          .inner-box {
+            width: 90%;
+            height: 40qw vw;
+            .rank {
+              top: 2vw;
+              font-size: 4vw;
+              color: white;
+            }
+            .rewardImg {
+              width: 100%;
+              height: 100%;
+              .img-box {
+                background-image: url(./assets/Reward-Base.png);
+                background-size: 100% 100%;
+                width: 20vw;
+                height: 22vw;
+                img {
+                  width: 70%;
+                }
+              }
+            }
+          }
+          .desc {
+            width: 80%;
+            height: 11vw;
+            font-size: 3vw;
+            margin: 0 auto;
+            color: white;
+            white-space: normal;
+            span {
+              width: 75%;
+            }
+          }
+        }
+        .indicators {
+          display: flex;
+          justify-content: center;
+          position: absolute;
+          left: 0;
+          right: 0;
+          span {
+            border-radius: 50%;
+            height: 2vw;
+            width: 2vw;
+            background-color: white;
+            margin: 3vw 0.7vw;
+          }
+          span.active {
+            background-color: gold;
+            border-radius: 50%;
+            height: 2vw;
+            width: 2vw;
+          }
+        }
+      }
+    }
+  }
+}
+.leaderboard {
+  background-image: url("./assets/leaderboardBg.png");
+  background-size: 100% 100%;
+  padding: 10vw 0 20vw 0;
+  &-title {
+    width: 85%;
+    height: 22vw;
+    left: 0;
+    right: 0;
+    top: -8vw;
+    img {
+      width: 100%;
+    }
+  }
+  .rank-section {
+    width: 100%;
+    .rank-section-inner {
+      width: 100%;
+      //Top Winners
+      .top-position-holders {
+        width: 85%;
+        margin-top: 20vw;
+        .user-container {
+          width: 37vw;
+          height: 30vw;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &:first-child {
+            order: 2;
+          }
+          &:nth-child(2) {
+            order: 1;
+            margin-top: 46vw;
+            margin-right: -12vw;
+          }
+          &:nth-child(3) {
+            order: 3;
+            margin-top: 46vw;
+            margin-left: -12vw;
+          }
+          .innerData {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            .rank {
+              top: -3vw;
+              color: white;
+              z-index: 2;
+              img {
+                width: 8vw;
+              }
+            }
+            .bottom-data1 {
+              background-image: url(./assets/1stUserDetailBase.png);
+              background-size: 100% 100%;
+              width: 100%;
+              height: 26vw;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              color: white;
+              padding: 4vw 0 2vw 0;
+            }
+            .bottom-data2 {
+              background-image: url(./assets/2ndUserDetailBase.png);
+              background-size: 100% 100%;
+              width: 100%;
+              height: 26vw;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              color: white;
+              padding: 4vw 0 2vw 0;
+            }
+            .bottom-data3 {
+              background-image: url(./assets/3rdUserDetailBase.png);
+              background-size: 100% 100%;
+              width: 100%;
+              height: 26vw;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              color: white;
+              padding: 4vw 0 2vw 0;
+            }
+            .username {
+              font-size: 2.8vw;
+              text-align: center;
+              white-space: nowrap;
+            }
+            .level-img {
+              width: 12vw;
+            }
+            .first-user {
+              .rank-user-image {
+                border-radius: 50%;
+                position: absolute;
+                width: 13vw;
+                top: -13vw;
+                z-index: 1;
+                left: 11vw;
+              }
+              .rank-border-image {
+                width: 20vw;
+                top: -21vw;
+                z-index: 1;
+              }
+            }
+            .runner-user {
+              .rank-user-image {
+                border-radius: 50%;
+                position: absolute;
+                width: 13vw;
+                top: -13vw;
+                z-index: 1;
+                left: 11vw;
+              }
+              .rank-border-image {
+                width: 20vw;
+                top: -21vw;
+                z-index: 1;
+              }
+            }
+            a {
+              outline: none;
+              cursor: none;
+            }
+            .score-box {
+              width: 80%;
+              .points {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2.8vw;
+              }
+              .est-points {
+                font-size: 2.5vw;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+      // Bottom Winners
+      .rest-position-holders {
+        width: 92%;
+        display: flex;
+        flex-direction: column;
+        gap: 3vw;
+        font-size: 2.5vw;
+        overflow: hidden;
+        margin: 0 auto;
+        margin-top: 10vw;
+        .users-details-onward {
+          background-image: url(./assets/UserDetailBase.png);
+          background-size: 100% 100%;
+          width: 85%;
+          height: 15vw;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 5vw 0 5vw;
+          .rank-id {
+            width: 5vw;
+            font-size: 3vw;
+            color: white;
+            margin: 0 auto;
+          }
+          .rank-user-image {
+            border-radius: 50%;
+            position: absolute;
+            width: 14vw;
+            top: 1vw;
+            left: 7vw;
+            z-index: 1;
+          }
+          .rank-border-image {
+            width: 18vw;
+            top: 1vw;
+            z-index: 1;
+          }
+          .user-image-top {
+            width: 8vw;
+            border-radius: 50%;
+            left: 10vw;
+            top: 3vw;
+          }
+          .user-info {
+            display: flex;
+            text-align: left;
+            .username {
+              font-size: 3vw;
+            }
+          }
+          .est-rew {
+            width: 25vw;
+            height: 8vw;
+            font-size: 2.8vw;
+            text-align: left;
+            img {
+              width: 3vw;
+              height: 3vw;
+            }
+          }
+          .rewards-slide {
+            width: 35vw;
+            height: 8vw;
+            font-size: 2.8vw;
+            font-weight: bold;
+            padding: 0vw 2vw 0 0;
+            text-align: left;
+            img {
+              width: 3vw;
+              height: 3vw;
+            }
+          }
+          a {
+            outline: none;
+            cursor: none;
+          }
+          .reward-img {
+            width: 26vw;
+            height: 8vw;
+            font-size: 3vw;
+            font-weight: bold;
+            padding: 0vw 2vw;
+            text-align: left;
+            img {
+              width: 8vw;
+              height: 10vw;
+            }
+          }
+        }
+      }
+      .rest-position-holders-max {
+        overflow-y: scroll;
+      }
+      .rest-position-holders-max::-webkit-scrollbar {
+        width: 2px;
+      }
+      .rest-position-holders-max::-webkit-scrollbar-track {
+        background-color: #cd8e53;
+        border-radius: 10px;
+      }
+      .rest-position-holders-max::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #5f250f;
+      }
+    }
+  }
+  .tab-buttons {
+    .btn-active {
+      width: 30vw;
+    }
+    .btn {
+      width: 30vw;
+      filter: grayscale(1);
+      transition: all 0.2s ease;
+    }
+  }
+}
+.loader {
+  position: relative;
+  width: 100%;
+  height: 20vw;
+  padding: 10vw 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 7vw;
+    height: 7vw;
+    margin: 8px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    animation: loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+    &:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+    &:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+    &:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+  }
+}
+.sub-buttons {
+  background-image: url(./assets/TodayBase2.png);
+  background-size: 100% 100%;
+  width: 70%;
+  height: 10vw;
+  margin-top: 5vw !important;
+  padding-top: 2vw;
+  button {
+    font-size: 2.5vw;
+    font-family: tangoSansItalic;
+    color: white;
+  }
+  .btn-active {
+    background-image: url(./assets/SelectedSubButton.png);
+    background-size: 100% 100%;
+    width: 40%;
+    height: 12vw;
+    filter: grayscale(0);
+    transition: all 0.2s ease;
+    margin-top: -3vw;
+    padding-top: 2vw;
+  }
+  .btn {
+    filter: grayscale(1);
+    transition: all 0.2s ease;
+    width: 40%;
+    height: 11vw;
+  }
+}
+.wheel-game {
+  background-image: url(./assets/wheelGameBg.png);
+  background-size: 100% 100%;
+  width: 95%;
+  height: 160vw;
+  padding-top: 8vw;
+  &-points {
+    background-image: url(./assets/MyTalentPointsBase.png);
+    background-size: 100% 100%;
+    width: 60%;
+    height: 13vw;
+    padding-top: 1vw;
+    font-size: 2.8vw;
+    top: -1vw;
+  }
+  &-text {
+    font-size: 3vw;
+  }
+  &-container {
+    width: 90%;
+    height: 100vw;
+    .luckyWheel-Game {
+      width: 100%;
+      &-wheel {
+        background-image: url(./assets/LuckyWheel.png);
+        background-size: 100% 100%;
+        width: 70%;
+        height: 67vw;
+        .inner {
+          width: 42vw;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          top: 7vw;
+        }
+      }
+      &-speed {
+        width: 80%;
+        button {
+          background-image: url(./assets/SpeedBase.png);
+          background-size: 100% 100%;
+          width: 15vw;
+          height: 9vw;
+          font-family: tangoSansItalic;
+          color: white;
+          font-size: 3.5vw;
+        }
+      }
+      &-spin-btn {
+        img {
+          width: 25vw;
+        }
+      }
+    }
+    .VipluckyWheel-Game {
+      width: 100%;
+      &-wheel {
+        background-image: url(./assets/vipwheelbase.png);
+        background-size: 100% 100%;
+        width: 80%;
+        height: 68vw;
+        .inner {
+          width: 40vw;
+          left: 1vw;
+          right: 0;
+          margin: 0 auto;
+          top: 9vw;
+        }
+      }
+      &-speed {
+        width: 80%;
+        button {
+          background-image: url(./assets/SpeedBase.png);
+          background-size: 100% 100%;
+          width: 15vw;
+          height: 9vw;
+          font-family: tangoSansItalic;
+          color: white;
+          font-size: 3.5vw;
+        }
+      }
+      &-spin-btn {
+        img {
+          width: 25vw;
+        }
+      }
+    }
+  }
+}
+.wheel-buttons {
+  width: 90%;
+  button {
+    font-size: 2.5vw;
+    font-family: tangoSansItalic;
+    color: white;
+    img {
+      width: 100%;
+    }
+  }
+  .btn-active {
+    width: 50%;
+    height: 18vw;
+    filter: grayscale(0);
+    transition: all 0.2s ease;
+  }
+  .btn {
+    filter: grayscale(1);
+    transition: all 0.2s ease;
+    width: 50%;
+    height: 18vw;
+  }
+}
+// ------------------------------
+.gridContainer {
+  width: 68%;
+  height: 60vw;
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  top: 33vw;
+  left: 15vw;
+  .bingo-image {
+    width: 60vw;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 18vw;
+  }
+}
+.gridCell {
+  background-image: url(./assets/gridBox.png);
+  background-size: 100% 100%;
+  width: 11vw;
+  height: 11vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 5vw;
+  color: black;
+
+  &:hover {
+    background-color: #e6e6e6;
+    cursor: pointer;
+  }
+}
+.bingoMessage {
+  background-color: #28a745;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  animation: fadeInOut 2s;
+
+  /* Fade-in and fade-out animation */
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+.closeButton {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: #a71d2a;
+  }
+}
+.game-popup {
+  width: 100%;
+  .success {
+    background-image: url(./assets/popups/largebg.png);
+    background-size: 100% 100%;
+    width: 85%;
+    height: 90vw;
+    color: white;
+    margin: 0 auto;
+    .head {
+      width: 80%;
+      margin: 0 auto;
+      top: -2vw;
+    }
+  }
+  .content {
+    width: 67%;
+    height: 62vw;
+    .body-text {
+      color: white;
+      font-size: 3.5vw;
+      width: 100%;
+      font-weight: bold;
+      .rews-box {
+        width: 100%;
+        max-height: 53vw;
+        flex-wrap: wrap;
+        gap: 3vw;
+        img {
+          background-image: url(./assets/Reward-Base.png);
+          background-size: 100% 100%;
+          padding: 1vw;
+          width: 15vw;
+        }
+        .name {
+          font-size: 2.5vw;
+          line-height: 3vw;
+        }
+      }
+      .rews-box-max {
+        width: 100%;
+        max-height: 53vw;
+        flex-wrap: wrap;
+        gap: 2vw;
+        overflow-y: scroll;
+        .name {
+          font-size: 2.8vw;
+          line-height: 3vw;
+        }
+      }
+      .rews-box-max::-webkit-scrollbar {
+        background-color: white;
+        background-size: 100% 100%;
+        width: 1vw;
+      }
+      .rews-box-max::-webkit-scrollbar-track {
+        background-color: white;
+        border-radius: 10px;
+      }
+      .rews-box-max::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #28a745;
+        background-size: 100% 100%;
+        width: 5vw;
+        height: 5vw;
+      }
+      img {
+        width: 15vw;
+      }
+      .rewards-box {
+        margin-top: 20vw;
+      }
+    }
+  }
+  .modal-close {
+    top: -12vw;
+    right: 1vw;
+    img {
+      width: 8vw;
+    }
+  }
+}
+
+.popup {
+  background: #fff;
+  padding: 20px;
+  color: black;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+// -----------------------------
+.see-buttons {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  bottom: 10vw;
+  button {
+    background-image: url(./assets/SeeButton.png);
+    background-size: 100% 100%;
+    width: 28%;
+    height: 10vw;
+    font-size: 3vw;
+    font-family: tangoSansItalic;
+    color: black;
+    img {
+      width: 25vw;
+    }
+  }
+}
+.popup-buttons {
+  button {
+    color: #51274c;
+    font-family: tangoSansItalic;
+    font-size: 3.2vw;
+    width: 20vw;
+    height: 10vw;
+    font-weight: bold;
+    &:nth-child(1) {
+      background-image: url(./assets/SlideButtonBaseLeft.png);
+      background-size: 100% 100%;
+      left: 0;
+      top: 80vw;
+      z-index: 3;
+      padding-right: 3vw;
+    }
+    &:nth-child(2) {
+      background-image: url(./assets/SlideButtonBaseRight.png);
+      background-size: 100% 100%;
+      right: 0;
+      top: 80vw;
+      z-index: 3;
+      padding-left: 2vw;
+    }
+    &:nth-child(3) {
+      background-image: url(./assets/SlideButtonBaseLeft.png);
+      background-size: 100% 100%;
+      left: 0;
+      z-index: 2;
+      padding-right: 4vw;
+    }
+    &:nth-child(4) {
+      background-image: url(./assets/SlideButtonBaseRight.png);
+      background-size: 100% 100%;
+      right: 0;
+      z-index: 2;
+      padding-left: 3vw;
+    }
+  }
+}
+.event-gifts {
+  background-color: #4b0275;
+  border: 2px solid #ffdd6a;
+  width: 82%;
+  border-radius: 5vw;
+  height: 30vw;
+  color: white;
+  padding: 2vw;
+
+  .heading {
+    font-size: 5vw;
+    top: -9vw;
+  }
+  .gifts {
+    width: 100%;
+    &-box {
+      &-frame {
+        background-image: url(./assets/Reward-Base.png);
+        background-size: 100% 100%;
+        width: 16vw;
+        height: 18vw;
+        font-size: 3vw;
+        padding-top: 1.5vw;
+        img {
+          width: 13vw;
+        }
+      }
+      &-cost {
+        background-color: #2b0242;
+        border: 1px solid white;
+        border-radius: 5vw;
+        padding: 1vw;
+        font-size: 2vw;
+        top: -2vw;
+        right: -2vw;
+        width: 6vw;
+        height: 1vw;
+        img {
+          width: 2vw;
+        }
+      }
+      &-name {
+        font-size: 2.5vw;
+      }
+    }
+  }
+}
+.guide-popup {
+  background-image: url(./assets/popups/Guide/bg.png);
+  background-size: 100% 100%;
+  width: 95%;
+  height: 135vw;
+  padding: 20vw 0 10vw 0;
+  margin-top: 25vw;
+
+  .title {
+    width: 70%;
+    left: 0;
+    right: 0;
+    top: 20vw;
+  }
+  &-content {
+    width: 95%;
+    .heading {
+      font-size: 5vw;
+    }
+    .top-text {
+      width: 90%;
+      font-size: 2.5vw;
+    }
+    .how-to-play {
+      width: 100%;
+      max-height: 80vw;
+      margin: auto;
+      overflow-y: scroll;
+      justify-content: flex-start;
+      gap: 2vw;
+
+      .title-text {
+        width: 78%;
+      }
+      .arrow {
+        width: 7vw;
+        position: absolute;
+        right: 2vw;
+        top: 7vw;
+      }
+
+      margin: auto;
+      .text-data {
+        background-color: #4b0275;
+        border: 2px solid #ffdd6a;
+        border-radius: 3vw;
+        width: 80%;
+        height: 50vw;
+        margin: auto;
+        transition: all 2s ease-in-out;
+        text-align: left;
+        font-size: 3vw;
+        color: white;
+        margin-top: -5vw;
+        padding: 2vw;
+        .box {
+          width: 100%;
+          margin: 0 auto;
+          height: 45vw;
+          line-height: 4vw;
+          margin-top: 4vw;
+          overflow-y: scroll;
+          ol {
+            padding: 0 0 0 4vw;
+          }
+        }
+        .box::-webkit-scrollbar {
+          width: 2px;
+        }
+        .box::-webkit-scrollbar-track {
+          background-color: #cd8e53;
+          border-radius: 10px;
+        }
+        .box::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          background-color: #5f250f;
+        }
+      }
+    }
+  }
+  .close {
+    right: 3vw;
+    top: 14vw;
+    img {
+      width: 8vw;
+    }
+  }
+}
+.event-gifting {
+  background-image: url(./assets/popups/EventGifting/lbbg.png);
+  background-size: 100% 100%;
+  width: 95%;
+  padding: 32vw 0 20vw 0;
+  margin-top: 13vw;
+  .title {
+    width: 70%;
+    left: 0;
+    right: 0;
+    top: 14vw;
+  }
+  .container {
+    .heading {
+      font-size: 5vw;
+      margin: 0;
+    }
+    .heading-text {
+      font-size: 3vw;
+    }
+  }
+  .close {
+    right: 3vw;
+    top: 10vw;
+  }
+}
+.giftingSub-buttons {
+  width: 70%;
+  height: 10vw;
+  button {
+    background-image: url(./assets/Layer.png);
+    background-size: 100% 100%;
+    width: 35%;
+    height: 9vw;
+    font-size: 3vw;
+    font-family: tangoSans;
+    color: white;
+  }
+}
+.details-popup {
+  background-image: url(./assets/popups/Details/bg.png);
+  background-size: 100% 100%;
+  width: 95%;
+  height: 95vw;
+  padding: 15vw 0 10vw 0;
+  color: white;
+  .title {
+    width: 80%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: -4vw;
+  }
+  .inner-content {
+    width: 80%;
+    .head {
+      background-color: #da9c00;
+      font-size: 3vw;
+      color: white;
+      div {
+        background-color: #e37820;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3vw 0;
+        border: 1px solid white;
+      }
+    }
+    .body {
+      height: 80vw;
+      overflow-y: scroll;
+      color: #540f75;
+      .box {
+        background-color: #ffdd6a;
+        border: 1px solid white;
+        padding: 2vw 0;
+        font-size: 3vw;
+      }
+      .rew-img {
+        width: 100%;
+        height: 9vw;
+        img {
+          width: 8vw;
+        }
+      }
+      .details {
+        font-size: 2vw;
+      }
+    }
+  }
+  .close {
+    right: 1vw;
+    top: -12vw;
+    img {
+      width: 8vw;
+    }
+  }
+}
+.language-dropdown {
+  right: 2vw;
+  top: 0;
+  margin: 0 auto;
+  color: white;
+  z-index: 2;
+  .selected-language {
+    background-color: #8102cb;
+    cursor: pointer;
+    font-size: 3.5vw;
+    color: white;
+    border-radius: 5vw;
+    height: 7vw;
+    margin-top: 2vw;
+    display: flex;
+    padding-left: 2vw;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      width: 4vw;
+      height: 3vw;
+      margin-left: 1vw;
+      background-color: #ffc437;
+      padding: 2vw;
+      border-radius: 0 5vw 5vw 0;
+    }
+  }
+  .language-list {
+    border-radius: 4px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .language-option {
+    padding: 1vw;
+    cursor: pointer;
+    color: white;
+    background-color: brown;
+    transition: background-color 0.2s ease;
+  }
+
+  .language-option:hover {
+    background-color: #e0e0e0; /* Highlight on hover */
+  }
+
+  .language-option.selected {
+    background-color: #ffffff; /* White background for the selected language */
+    font-weight: bold;
+    color: black;
+    pointer-events: none; /* Prevent clicking the already selected language */
+  }
+}
+.rewards-slider-overall {
+  background-image: url(./assets/popups/EventGifting/rewardsSection.png);
+  background-size: 100% 100%;
+  width: 95%;
+  height: 70vw;
+  padding-top: 5vw;
+  .sliderItem {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .carousel {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      .inner {
+        width: 100%;
+        height: 100%;
+        white-space: nowrap;
+        transition: transform 0s;
+      }
+      .slide-buttons {
+        top: 30vw;
+        justify-content: space-between;
+        width: 92%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        img {
+          width: 5vw;
+        }
+      }
+    }
+    .carousel-item {
+      display: inline-flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      gap: 1vw;
+      .inner-box {
+        width: 93%;
+        .rank {
+          width: 80%;
+          top: 8vw;
+          font-size: 3.5vw;
+          color: white;
+          height: 10vw;
+        }
+        .rewardImg {
+          width: 100%;
+          height: 100%;
+          &-box {
+            width: 22vw;
+          }
+          .img-box {
+            background-image: url(./assets/Reward-Base.png);
+            background-size: 100% 100%;
+            width: 90%;
+            height: 20vw;
+            img {
+              width: 70%;
+            }
+          }
+          .desc {
+            font-size: 2.5vw;
+            margin: 0 auto;
+            color: white;
+            white-space: normal;
+            span {
+              width: 75%;
+            }
+          }
+        }
+      }
+    }
+    .indicators {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 9vw;
+      left: 0;
+      right: 0;
+      span {
+        border-radius: 50%;
+        height: 2vw;
+        width: 2vw;
+        background-color: white;
+        margin: 3vw 0.7vw;
+      }
+      span.active {
+        background-color: gold;
+        border-radius: 50%;
+        height: 2vw;
+        width: 2vw;
+      }
+    }
+  }
+}
