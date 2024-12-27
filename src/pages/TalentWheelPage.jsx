@@ -6,7 +6,7 @@ import { ApiContext } from "../services/Api";
 import LeaderBoard from "../components/leaderboard/LeaderBoad";
 
 function TalentWheelPage({ tab2 }) {
-  const { userInfo, tickertapeLuckyWheel, tickertapeVipLuckyWheel } = useContext(ApiContext);
+  const { tickertapeLuckyWheel, tickertapeVipLuckyWheel } = useContext(ApiContext);
   const [wheelBtns, setwheelBtns] = useState({
     Lucky: true,
     VipLucky: false,

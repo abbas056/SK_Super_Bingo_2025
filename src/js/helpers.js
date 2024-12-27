@@ -79,3 +79,39 @@ export const unsuccessAlert = (oops, msj) => [
     data: <>{msj}</>,
   },
 ];
+export const w1Rotation = (descrip, setFirstWheel) => {
+  if (descrip.includes("Game Master room skin")) {
+    setFirstWheel("w1rotate1");
+  } else if (descrip.includes("gems")) {
+    setFirstWheel("w1rotate2");
+  } else if (descrip.includes("SVIP")) {
+    setFirstWheel("w1rotate3");
+  } else if (descrip.includes("Game Master Battle frame")) {
+    setFirstWheel("w1rotate4");
+  } else if (descrip.includes("MasterMind room skin")) {
+    setFirstWheel("w1rotate5");
+  } else if (descrip.includes("MasterMind frame")) {
+    setFirstWheel("w1rotate6");
+  } else {
+    setFirstWheel("w1rotate0");
+  }
+};
+export const w2Rotation = (description, setSecondWheel) => {
+  if (description.includes("Bumblebee entrance")) {
+    setSecondWheel("w2rotate0");
+  } else if (description.includes("Enlightening Room Skin")) {
+    setSecondWheel("w2rotate1");
+  } else if (description.includes("gems")) {
+    setSecondWheel("w2rotate2");
+  } else if (description.includes("SVIP")) {
+    setSecondWheel("w2rotate3");
+  } else if (description.includes("Game Master Battle frame")) {
+    setSecondWheel("w2rotate4");
+  } else if (description.includes("Game Master room skin")) {
+    setSecondWheel("w2rotate5");
+  } else if (description.includes("MasterMind room skin")) {
+    setSecondWheel("w2rotate6");
+  } else if (description.includes("MasterMind frame")) {
+    setSecondWheel("w2rotate7");
+  }
+};

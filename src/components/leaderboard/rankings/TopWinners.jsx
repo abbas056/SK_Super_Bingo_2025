@@ -10,21 +10,27 @@ function TopWinners({ userName, userScore, userAvatar, userId, index, userLevel,
 
   let levelUrl;
   let level;
-  if (tab1 || eventGifting) {
+  let lvlIconWidth;
+  if (tab1) {
     levelUrl = `${baserUrl}streamkar/common/img/ulv/`;
     level = userLevel;
+    lvlIconWidth = "12vw";
+  } else if (eventGifting) {
+    if (subTabs.Talents) {
+      levelUrl = `${baserUrl}streamkar/common/img/tlv/`;
+      level = actorLevel;
+      lvlIconWidth = "7vw";
+    } else if (subTabs.Gifters) {
+      levelUrl = `${baserUrl}streamkar/common/img/ulv/`;
+      level = userLevel;
+      lvlIconWidth = "12vw";
+    }
+  } else {
+    levelUrl = `${baserUrl}streamkar/common/img/tlv/`;
+    level = actorLevel;
+    lvlIconWidth = "7vw";
   }
-  // else if (eventGifting) {
-  //   if (subTabs.Gifters) {
-  //     levelUrl = `${baserUrl}streamkar/common/img/ulv/`;
-  //     level = userLevel;
-  //     icon = beanIcon;
-  //   } else {
-  //     levelUrl = `${baserUrl}streamkar/common/img/tlv/`;
-  //     level = actorLevel;
-  //     icon = `${baserUrl}streamkar/rewards/gems.png`;
-  //   }
-  // }
+
   let rank = index + 1;
 
   return (
@@ -49,7 +55,7 @@ function TopWinners({ userName, userScore, userAvatar, userId, index, userLevel,
         }
       >
         <div className="username">{userName && userName.slice(0, 10)}</div>
-        <img style={{ width: "10vw" }} src={levelUrl + level + ".png"} alt="" />
+        <img style={{ width: `${lvlIconWidth}` }} src={levelUrl + level + ".png"} alt="" />
         <div className="score-box d-flex fd-column al-center">
           <div className="points d-flex al-center jc-center gap-1">
             <img style={{ width: "5vw", height: "5vw" }} src={icon} alt="" />

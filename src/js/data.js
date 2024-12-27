@@ -137,7 +137,7 @@ export const tab1Details = {
     {
       id: 1,
       button: "BINGO",
-      pointsReq: "10,000",
+      pointsReq: "30,000",
       rewards: [
         {
           pic: `${baserUrl}streamkar/rewards/noRew.png`,

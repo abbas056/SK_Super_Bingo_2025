@@ -44,11 +44,6 @@ function EventProvider({ children }) {
   const CurrentDate = formatDate(cd);
   const PreviousDate = formatDate(pd);
 
-  const now = new Date();
-  const hrs = now.getUTCHours();
-  const currentHours = hrs === 0 ? 0 : hrs;
-  const previousHours = hrs === 0 ? 23 : hrs - 1;
-
   useEffect(() => {
     try {
       window.phone.getUserInfo(function (userInfo) {
@@ -59,7 +54,7 @@ function EventProvider({ children }) {
       });
       //  setUser({
       //    uid: 596492375,
-      //    token: "A12E6D5EB514534219948C187C8BDD6210",
+      //    token: "A14F7F106263824E1485E3EE035EEF71FB",
       //  });
     } catch (_error) {
       setUser({
@@ -89,7 +84,7 @@ function EventProvider({ children }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=15&pageNum=1&pageSize=20&dayIndex=2023-12-26`)
+      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=15&pageNum=1&pageSize=20&dayIndex=${CurrentDate}`)
       .then((response) => {
         setbingoToday(response.data);
         setIsLoading(false);
@@ -99,7 +94,7 @@ function EventProvider({ children }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=15&pageNum=1&pageSize=20&dayIndex=2023-12-25`)
+      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=15&pageNum=1&pageSize=20&dayIndex=${PreviousDate}`)
       .then((response) => {
         setbingoPrevious(response.data);
         setIsLoading(false);
@@ -109,7 +104,7 @@ function EventProvider({ children }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=14&pageNum=1&pageSize=20&dayIndex=2023-12-26`)
+      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=14&pageNum=1&pageSize=20&dayIndex=${CurrentDate}`)
       .then((response) => {
         settalentDailyToday(response.data);
         setIsLoading(false);
@@ -119,7 +114,7 @@ function EventProvider({ children }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=14&pageNum=1&pageSize=20&dayIndex=2023-12-25`)
+      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=14&pageNum=1&pageSize=20&dayIndex=${PreviousDate}`)
       .then((response) => {
         settalentDailyYesterday(response.data);
         setIsLoading(false);
@@ -140,7 +135,7 @@ function EventProvider({ children }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=13&pageNum=1&pageSize=20&dayIndex=2023-12-26`)
+      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=13&pageNum=1&pageSize=20&dayIndex=${CurrentDate}`)
       .then((response) => {
         setgifterDailyToday(response.data);
         setIsLoading(false);
@@ -150,7 +145,7 @@ function EventProvider({ children }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=13&pageNum=1&pageSize=20&dayIndex=2023-12-25`)
+      .get(`${baserUrl}api/activity/eidF/getLeaderboardInfoV2?eventDesc=20250124_bingo&rankIndex=13&pageNum=1&pageSize=20&dayIndex=${PreviousDate}`)
       .then((response) => {
         setgifterDailyYesterday(response.data);
         setIsLoading(false);

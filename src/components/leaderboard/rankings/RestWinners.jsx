@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { captureImageError, formatData, goTo } from "../../../js/helpers";
 import { baserUrl } from "../../../js/baserUrl";
-import beanIcon from "../../../assets/bean.png";
 import { ApiContext } from "../../../services/Api";
 import { onwardFrame, unknown } from "../../../utils/images";
+import LeaderBoardSlider from "./../../leaderboard-slider/LeaderBoardSlider";
 
 function RestWinners({
   userName,
@@ -16,41 +16,36 @@ function RestWinners({
   actorLevel,
   tab1,
   tab2,
-  tab3,
   desc,
-  subTabs,
   eventGifting,
   icon,
+  subTabs,
 }) {
   const { isLive } = useContext(ApiContext);
 
   let levelUrl;
   let level;
-
-  if (tab1 || eventGifting || tab2) {
+  let lvlIconWidth;
+  if (tab1) {
     levelUrl = `${baserUrl}streamkar/common/img/ulv/`;
     level = userLevel;
+    lvlIconWidth = "12vw";
+  } else if (eventGifting) {
+    if (subTabs.Talents) {
+      levelUrl = `${baserUrl}streamkar/common/img/tlv/`;
+      level = actorLevel;
+      lvlIconWidth = "7vw";
+    } else if (subTabs.Gifters) {
+      levelUrl = `${baserUrl}streamkar/common/img/ulv/`;
+      level = userLevel;
+      lvlIconWidth = "12vw";
+    }
+  } else {
+    levelUrl = `${baserUrl}streamkar/common/img/tlv/`;
+    level = actorLevel;
+    lvlIconWidth = "7vw";
   }
-  // else if (eventGifting) {
-  //   if (subTabs.Talents) {
-  //     levelUrl = `${baserUrl}streamkar/common/img/tlv/`;
-  //     level = actorLevel;
-  //     icon = `${baserUrl}streamkar/rewards/gems.png`;
-  //   } else {
-  //     levelUrl = `${baserUrl}streamkar/common/img/ulv/`;
-  //     level = userLevel;
-  //     icon = beanIcon;
-  //   }
-  // } else if (tab3) {
-  //   levelUrl = `${baserUrl}streamkar/common/img/tlv/`;
-  //   level = actorLevel;
-  //   icon = beanIcon;
-  // } else {
-  //   levelUrl = `${baserUrl}streamkar/common/img/ulv/`;
-  //   level = userLevel;
-  //   icon = beanIcon;
-  // }
-  // let arrayDesc = desc && JSON.parse(desc);
+  let arrayDesc = desc && JSON.parse(desc);
   return (
     <>
       <div className="users-details-onward f-tangoItalic" key={index}>
@@ -67,14 +62,20 @@ function RestWinners({
             </div>
             <div className="user-info d-flex fd-column gap-1">
               <span className="username">{userName && userName.slice(0, 12)}</span>
-              <img style={{ width: "10vw" }} src={levelUrl + level + ".png"} alt="" />
+              <img style={{ width: `${lvlIconWidth}` }} src={levelUrl + level + ".png"} alt="" />
             </div>
           </div>
         </div>
-        <div className="est-rew d-flex al-center jc-start gap-1">
-          <img style={{ width: "5vw", height: "5vw" }} src={icon} alt="" />
-          <span>00000</span>
-        </div>
+        {tab2 ? (
+          <div className="rewards-slide d-flex al-center jc-end gap-1">
+            <LeaderBoardSlider description={formatData(arrayDesc)} />
+          </div>
+        ) : (
+          <div className="est-rew d-flex al-center jc-start">
+            <img style={{ width: "4vw", height: "4vw" }} src={icon} alt="" />
+            <span>{userScore}</span>
+          </div>
+        )}
       </div>
     </>
   );

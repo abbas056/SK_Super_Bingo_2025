@@ -4,20 +4,22 @@ import Guide from "./popups/Guide";
 import Details from "./popups/Details";
 import Records from "./popups/Records";
 
-function PopupButtons({ popupSwitch, mainTabs, close, popup, language }) {
+function PopupButtons({ popupSwitch, mainTabs, close, popup, language, history, gameRecords, loadMoreHistory, isLoading }) {
   return (
     <>
       <div className="popup-buttons">
-        <button className="p-fix " onClick={() => popupSwitch("guide")}>
+        <button className="p-fix guideBtn" onClick={() => popupSwitch("guide")}>
           Guide
         </button>
-        <button className="p-fix " onClick={() => popupSwitch("eventGifting")}>
+        <button className="p-fix giftingBtn" onClick={() => popupSwitch("eventGifting")}>
           Event <br /> Gifitng
         </button>
-        <button className="p-abs " style={mainTabs.tab1 ? { top: "150vw" } : { top: "132vw" }} onClick={() => popupSwitch("details")}>
-          Details
-        </button>
-        <button className="p-abs " style={mainTabs.tab1 ? { top: "150vw" } : { top: "132vw" }} onClick={() => popupSwitch("records")}>
+        {mainTabs.tab1 ? (
+          <button className="p-abs DetailsBtn" style={mainTabs.tab1 ? { top: "155vw" } : { top: "174vw" }} onClick={() => popupSwitch("details")}>
+            Details
+          </button>
+        ) : null}
+        <button className="p-abs RecordsBtn" style={mainTabs.tab1 ? { top: "155vw" } : { top: "174vw" }} onClick={() => popupSwitch("records")}>
           Records
         </button>
       </div>
@@ -31,7 +33,16 @@ function PopupButtons({ popupSwitch, mainTabs, close, popup, language }) {
         {popup.details ? <Details close={close} mainTabs={mainTabs} /> : null}
       </div>
       <div className="overlay" style={{ visibility: popup.records ? "visible" : "hidden" }}>
-        {popup.records ? <Records mainTabs={mainTabs} close={close} /> : null}
+        {popup.records ? (
+          <Records
+            mainTabs={mainTabs}
+            close={close}
+            history={history}
+            gameRecords={gameRecords}
+            loadMoreHistory={loadMoreHistory}
+            isLoading={isLoading}
+          />
+        ) : null}
       </div>
     </>
   );

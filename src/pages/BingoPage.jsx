@@ -26,14 +26,14 @@ function BingoPage({ tab1 }) {
     beansPot = userInfo?.beansPotInfo?.[prevBeansPot];
   }
 
-  const gamePoints = userInfo?.gamePoints / 25000;
+  const gamePoints = userInfo?.gamePoints;
   const dailyWins = userInfo?.dailyScores;
   const topWinners = slicePlease(winners?.list, 0, 3);
   const restWinners = slicePlease(winners?.list, 3, winners?.list?.length);
   return (
     <div className="mt-5vw f-tangoSansItalic">
       <MyPoints tab1={tab1} icon={gamePointsIcon} text="My Game Points" value={gamePoints ? gamePoints : 0} />
-      <BingoGame />
+      <BingoGame gamePoints={gamePoints} />
       <div className="bingo-wins d-flex al-center jc-center gap-1 m-auto">
         <img className="w-6vw" src={bingoWinsIcon} alt="" />
         Daily Bingo WIns: {dailyWins}
@@ -50,6 +50,7 @@ function BingoPage({ tab1 }) {
         subBtn2name={"Previous"}
         subTabs={subTabs}
         setSubTabs={setSubTabs}
+        icon={beanIcon}
       />
     </div>
   );

@@ -109,6 +109,7 @@ function EventGifting({ close, eventGifting }) {
             arrayData={winners}
             eventGifting={eventGifting}
             icon={icon}
+            subTabs={subTabs}
           />
         </div>
         <div className="close p-abs" onClick={close}>

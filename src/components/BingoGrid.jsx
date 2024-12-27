@@ -2,34 +2,47 @@ import React, { useContext, useEffect, useState } from "react";
 import { ApiContext } from "../services/Api";
 import { baserUrl } from "../js/baserUrl";
 import { callDartApi, cross, overFlowAuto, overFlowHidden, successAlert, unsuccessAlert } from "../js/helpers";
-import { bingoPlayBtn, gamePointsIcon, rewardImages, star, bingoHead, congratulationHead, oopsHead, bingoImage } from "../utils/images";
+import { bingoPlayBtn, gamePointsIcon, rewardImages, star, bingoHead, congratulationHead, oopsHead, bingoPopupImage } from "../utils/images";
 
-const BingoGrid = () => {
+const BingoGrid = ({ gamePoints }) => {
   const { userInfo, userId, userToken, refreshApi } = useContext(ApiContext);
-
   const [grid, setGrid] = useState([]);
   const [alert, setAlert] = useState(false);
   const [alertpopup, setAlertpopup] = useState([]);
   const [bingo, setBingo] = useState(false);
   const [input, setInput] = useState(1);
-  const [error, setError] = useState("");
+  const [error, setError] = useState("Max value = 999");
   const [buttonDisabled, setButtonDisabled] = useState(false);
-
-  const chancesLeft = userInfo?.gamePoints || 0;
-  const myChances = Math.floor(chancesLeft / 25000);
 
   // Handle input changes
   const handleInput = (event) => {
-    const value = event.target.value.replace(/[^0-9]/g, ""); // Allow only numbers
-    const max = Math.min(myChances, 999);
-    const number = Math.max(1, Math.min(parseInt(value || "1", 10), max));
+    let value = event.target.value;
+    let max = gamePoints < 999 ? gamePoints : 999;
+    let val = value.replace(/[^0-9]/g, "");
+    let number = parseInt(val) > max ? max : parseInt(val) <= 0 ? 1 : parseInt(val);
     setInput(number);
-
-    if (!value) {
+    if (event.target.value === "") {
       setError("Enter some value");
       setButtonDisabled(true);
+    } else if (number === max && value.includes(".")) {
+      setInput(1);
+    } else if (
+      input === `${value}.0` ||
+      input === `${value}.00` ||
+      input === `${value}.000` ||
+      input === `${value}.0000` ||
+      input === `${value}.00000` ||
+      input === `${value}.000000` ||
+      input === `${value}.0000000` ||
+      input === `${value}.00000000` ||
+      input === `${value}.000000000` ||
+      input === `${value}.0000000000`
+    ) {
+      setInput(number);
+      setError("Wrong input value");
+      setButtonDisabled(true);
     } else {
-      setError("");
+      setError("Max value = 999");
       setButtonDisabled(false);
     }
   };
@@ -47,7 +60,7 @@ const BingoGrid = () => {
 
   // Play the game
   const playGame = () => {
-    if (myChances < 1) {
+    if (gamePoints < 30000) {
       setAlert(true);
       setAlertpopup(
         unsuccessAlert(
@@ -159,7 +172,7 @@ const BingoGrid = () => {
     <>
       <div className="bingo-game-container p-rel">
         <div className="gridContainer p-rel">
-          {bingo && <img className="bingo-image p-abs" src={bingoImage} alt="" />}
+          {bingo && <img className="bingo-image p-abs" src={bingoPopupImage} alt="" />}
           {grid?.map((row, rowIndex) =>
             row?.map((cell, cellIndex) => (
               <div key={`${rowIndex}-${cellIndex}`} className="gridCell">
@@ -189,7 +202,7 @@ const BingoGrid = () => {
           <button onClick={playGame} disabled={buttonDisabled}>
             <img className={buttonDisabled ? "gray-1" : "gray-0"} src={bingoPlayBtn} alt="" />
           </button>
-          <span>25k Game Pts Req</span>
+          <span>30k Game Pts Req</span>
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Content from "./Content";
 import { cross } from "../../js/helpers";
 import EventGifts from "../common/EventGifts";
-import { bingoTitle, down, giftingTitle, guideTitle, right, wheelTitle } from "../../utils/images";
+import { bingoTitle, btnDown, btnUp, down, giftingTitle, guideTitle, right, wheelTitle } from "../../utils/images";
 import { guideContent } from "../../js/data";
 
 function Guide({ language, close }) {
@@ -34,21 +34,21 @@ function Guide({ language, close }) {
               <div className="love-connection">
                 <div className="toggle-btn p-rel jc-center al-center d-flex">
                   <img className="title-text" src={bingoTitle} alt="" />
-                  <img className="arrow" onClick={() => collapsibleSwitch("boxFirst")} src={collapsible.boxFirst ? down : right} alt="" />
+                  <img className="arrow" onClick={() => collapsibleSwitch("boxFirst")} src={collapsible.boxFirst ? btnDown : btnUp} alt="" />
                 </div>
                 {collapsible.boxFirst && <Content boxFirst={collapsible.boxFirst} language={language} content={current.firstBox} />}
               </div>
               <div className="love-dare">
                 <div className="toggle-btn p-rel jc-center al-center d-flex">
                   <img className="title-text" src={wheelTitle} alt="" />
-                  <img className="arrow" onClick={() => collapsibleSwitch("boxSecond")} src={collapsible.boxSecond ? down : right} alt="" />
+                  <img className="arrow" onClick={() => collapsibleSwitch("boxSecond")} src={collapsible.boxSecond ? btnDown : btnUp} alt="" />
                 </div>
                 {collapsible.boxSecond && <Content boxSecond={collapsible.boxSecond} language={language} content={current.secondBox} />}
               </div>
               <div className="talent-tree">
                 <div className="toggle-btn p-rel jc-center al-center d-flex">
                   <img className="title-text" src={giftingTitle} alt="" />
-                  <img className="arrow" onClick={() => collapsibleSwitch("boxThird")} src={collapsible.boxThird ? down : right} alt="" />
+                  <img className="arrow" onClick={() => collapsibleSwitch("boxThird")} src={collapsible.boxThird ? btnDown : btnUp} alt="" />
                 </div>
                 {collapsible.boxThird && <Content boxThird={collapsible.boxThird} language={language} content={current.thirdBox} />}
               </div>

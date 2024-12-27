@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./App.scss";
-import { header } from "./utils/images";
+import { btnUp, header } from "./utils/images";
 import Marque from "./components/Marquee";
 import MainButtons from "./components/MainButtons";
 import PopupButtons from "./components/PopupButtons";
 import { overFlowAuto, overFlowHidden } from "./js/helpers";
 import LanguageBar from "./components/common/LanguageBar";
+import Footer from "./components/common/Footer";
+import { ApiContext } from "./services/Api";
+import axios from "axios";
+import { baserUrl } from "./js/baserUrl";
 
 const App = () => {
   let [language, setLanguage] = useState("English");
+  const [showBtnUp, setShowBtnUp] = useState(false);
+  const [history, setHistory] = useState(false);
+  const [gameRecords, setgameRecords] = useState([]);
+  const [loadMore, setLoadMore] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const { userId, userInfo } = useContext(ApiContext);
 
   const [mainTabs, setMainTabs] = useState({
     tab1: true,
@@ -33,14 +43,68 @@ const App = () => {
   const close = () => {
     setPopup(false);
     overFlowAuto();
+    setHistory(false);
+    setLoadMore(1);
   };
+
+  useEffect(() => {
+    function handleScroll() {
+      if (window.pageYOffset > 100) {
+        setShowBtnUp(true);
+      } else {
+        setShowBtnUp(false);
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  const loadMoreHistory = () => {
+    setLoadMore(loadMore + 1);
+  };
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get(
+        `${baserUrl}api/activity/eidF/getRecordInfo?eventDesc=20250124_bingo&rankIndex=21&pageNum=${loadMore}&pageSize=20&type=${
+          mainTabs.tab1 ? 1 : 2
+        }&userId=${userId}`
+      )
+      .then((response) => {
+        if (loadMore >= 2) {
+          setgameRecords((prev) => [...prev, response?.data?.data?.list]);
+        } else {
+          setgameRecords([response?.data?.data?.list]);
+        }
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, [mainTabs, userInfo, loadMore, userId]);
+
   return (
     <div className="App">
       <LanguageBar setLanguage={setLanguage} language={language} />
       <img className="w-100 mb-4vw" src={header} alt="" />
       <Marque />
       <MainButtons mainTabs={mainTabs} setMainTabs={setMainTabs} />
-      <PopupButtons mainTabs={mainTabs} popupSwitch={popupSwitch} close={close} popup={popup} language={language} />
+      <PopupButtons
+        mainTabs={mainTabs}
+        popupSwitch={popupSwitch}
+        close={close}
+        popup={popup}
+        language={language}
+        history={history}
+        gameRecords={gameRecords}
+        loadMoreHistory={loadMoreHistory}
+        isLoading={isLoading}
+      />
+      <Footer />
+      {showBtnUp && (
+        <button className="btn-up" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <img src={btnUp} alt="" />
+        </button>
+      )}
     </div>
   );
 };

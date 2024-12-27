@@ -33,7 +33,18 @@ function Marque() {
                     <div className="text">
                       <div className="content d-flex al-center fd-row">
                         <span className="nick-name">{nickName}</span>
-                        <p className="d-flex al-center jc-center ">has Won {dailyWins} BINGO games & has ranked (user_rank) in BINGO game.</p>
+                        <p className="d-flex al-center jc-center ">
+                          has Won{" "}
+                          <span className="c-yellow" style={{ marginRight: "1vw" }}>
+                            {dailyWins}
+                          </span>{" "}
+                          BINGO games & has ranked{" "}
+                          <span className="c-yellow" style={{ marginRight: "1vw" }}>
+                            {" "}
+                            {item?.userLevel}{" "}
+                          </span>{" "}
+                          in BINGO game.
+                        </p>
                       </div>
                     </div>
                   </div>

@@ -37,7 +37,10 @@ import congratulationHead from "../assets/popups/congratulations.png";
 import bingoHead from "../assets/popups/bingo.png";
 import oopsHead from "../assets/popups/oops.png";
 import gemIcon from "../assets/gems.png";
-import bingoImage from "../assets/Bingo.png";
+import bingoPopupImage from "../assets/BingoPopup1.png";
+import btnUp from "../assets/BtnUppng.png";
+import btnDown from "../assets/BtnDownpng.png";
+import recordsTitle from "../assets/popups/Records/title.png";
 import { baserUrl } from "../js/baserUrl";
 
 export {
@@ -67,6 +70,7 @@ export {
   bingoPlayBtn,
   down,
   right,
+  btnUp,
   guideTitle,
   bingoTitle,
   giftingTitle,
@@ -80,7 +84,9 @@ export {
   gemspot,
   gemsbag,
   gemIcon,
-  bingoImage,
+  bingoPopupImage,
+  recordsTitle,
+  btnDown,
 };
 export function rewardImages(rewDesc) {
   var rewImg;
@@ -120,6 +126,30 @@ export function rewardImages(rewDesc) {
     rewImg = baserUrl + "streamkar/rewards/bunnyFrame.gif";
   } else if (rewDesc == "Fish World audio theme") {
     rewImg = baserUrl + "streamkar/rewards/fishWorldRoomskin.png";
+  } else if (rewDesc == "Thunder room skin") {
+    rewImg = baserUrl + "streamkar/rewards/thunderRoomskin.png";
+  } else if (rewDesc == "Enchanted frame") {
+    rewImg = baserUrl + "streamkar/rewards/enchantedFrame.png";
+  } else if (rewDesc == "Gold Luxury entrance") {
+    rewImg = baserUrl + "streamkar/rewards/goldLuxury.png";
+  } else if (rewDesc == "Frosty Frame") {
+    rewImg = baserUrl + "streamkar/rewards/frostyFrame.png";
+  } else if (rewDesc == "Sea Wolf room skin") {
+    rewImg = baserUrl + "streamkar/rewards/seaWolfRoomSkin.png";
+  } else if (rewDesc == "Game Master room skin") {
+    rewImg = baserUrl + "streamkar/rewards/gameMasterRoomSkin.png";
+  } else if (rewDesc == "gems") {
+    rewImg = baserUrl + "streamkar/rewards/gems.png";
+  } else if (rewDesc == "MasterMind room skin") {
+    rewImg = baserUrl + "streamkar/rewards/noRew.png";
+  } else if (rewDesc == "Game Master Battle frame") {
+    rewImg = baserUrl + "streamkar/rewards/gameMasterFarme.png";
+  } else if (rewDesc == "MasterMind frame") {
+    rewImg = baserUrl + "streamkar/rewards/noRew.png";
+  } else if (rewDesc == "Bumblebee entrance") {
+    rewImg = baserUrl + "streamkar/rewards/bumblebee.png";
+  } else if (rewDesc == "Enlightening Room Skin") {
+    rewImg = baserUrl + "streamkar/rewards/enlighteningRoom.png";
   } else {
     rewImg = baserUrl + "streamkar/rewards/noRew.png";
   }

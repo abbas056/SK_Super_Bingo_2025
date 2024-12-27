@@ -60,7 +60,7 @@ $standardWidth: 750;
     .taxts {
       background-image: url(./assets/TickerTapeBase.png);
       background-size: 100% 100%;
-      width: 108vw;
+      width: 115vw;
       height: 14vw;
       color: #fefffe;
       font-size: 3vw;
@@ -135,9 +135,10 @@ $standardWidth: 750;
 .my-points {
   background-image: url(./assets/MyGamePointsBase.png);
   background-size: 100% 100%;
-  width: 70%;
-  height: 16vw;
-  font-size: 3.2vw;
+  width: 65%;
+  height: 15vw;
+  font-size: 3vw;
+  text-shadow: 1px 1px 0 black, -1px 1px 0 black, 1px -1px 0 black, -1px -1px 0 black;
 }
 .bingo-game {
   background-image: url(./assets/BingoGameBg.png);
@@ -214,10 +215,10 @@ $standardWidth: 750;
   width: 70%;
   height: 13vw;
   font-size: 3.2vw;
+  text-shadow: 1px 1px 0 black, -1px 1px 0 black, 1px -1px 0 black, -1px -1px 0 black;
 }
 .rewards-box {
   background-size: 100% 100%;
-  width: 95%;
   height: 130vw;
   .title {
     left: 0;
@@ -558,9 +559,9 @@ $standardWidth: 750;
             }
           }
           .est-rew {
-            width: 25vw;
+            width: 20vw;
             height: 8vw;
-            font-size: 2.8vw;
+            font-size: 2.7vw;
             text-align: left;
             img {
               width: 3vw;
@@ -569,11 +570,10 @@ $standardWidth: 750;
           }
           .rewards-slide {
             width: 35vw;
-            height: 8vw;
             font-size: 2.8vw;
             font-weight: bold;
-            padding: 0vw 2vw 0 0;
             text-align: left;
+            margin-top: 2vw;
             img {
               width: 3vw;
               height: 3vw;
@@ -692,11 +692,13 @@ $standardWidth: 750;
   &-points {
     background-image: url(./assets/MyTalentPointsBase.png);
     background-size: 100% 100%;
-    width: 60%;
+    width: 65%;
     height: 13vw;
     padding-top: 1vw;
-    font-size: 2.8vw;
+    font-size: 2.5vw;
     top: -1vw;
+    font-weight: 700;
+    text-shadow: 1px 1px 0 black, -1px 1px 0 black, 1px -1px 0 black, -1px -1px 0 black;
   }
   &-text {
     font-size: 3vw;
@@ -711,12 +713,43 @@ $standardWidth: 750;
         background-size: 100% 100%;
         width: 70%;
         height: 67vw;
-        .inner {
-          width: 42vw;
-          left: 0;
-          right: 0;
-          margin: 0 auto;
-          top: 7vw;
+        .wheel {
+          width: 100%;
+          .image-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            //Wheel-1 degree
+            .w1rotate0 {
+              transform: rotate(5015deg);
+              transition: transform 3s ease-out;
+            }
+            .w1rotate1 {
+              transform: rotate(4965deg);
+              transition: transform 3s ease-out;
+            }
+            .w1rotate2 {
+              transform: rotate(4910deg);
+              transition: transform 3s ease-out;
+            }
+            .w1rotate3 {
+              transform: rotate(4860deg);
+              transition: transform 3s ease-out;
+            }
+            .w1rotate4 {
+              transform: rotate(4810deg);
+              transition: transform 3s ease-out;
+            }
+            .w1rotate5 {
+              transform: rotate(4760deg);
+              transition: transform 3s ease-out;
+            }
+            .w1rotate6 {
+              transform: rotate(4705deg);
+              transition: transform 3s ease-out;
+            }
+          }
         }
       }
       &-speed {
@@ -744,12 +777,47 @@ $standardWidth: 750;
         background-size: 100% 100%;
         width: 80%;
         height: 68vw;
-        .inner {
-          width: 40vw;
-          left: 1vw;
-          right: 0;
-          margin: 0 auto;
-          top: 9vw;
+        .wheel {
+          width: 100%;
+          .image-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            //wheel-2 degree
+            .w2rotate0 {
+              transform: rotate(5020deg);
+              transition: transform 3s ease-out;
+            }
+            .w2rotate1 {
+              transform: rotate(4975deg);
+              transition: transform 3s ease-out;
+            }
+            .w2rotate2 {
+              transform: rotate(4930deg);
+              transition: transform 3s ease-out;
+            }
+            .w2rotate3 {
+              transform: rotate(4885deg);
+              transition: transform 3s ease-out;
+            }
+            .w2rotate4 {
+              transform: rotate(4840deg);
+              transition: transform 3s ease-out;
+            }
+            .w2rotate5 {
+              transform: rotate(4795deg);
+              transition: transform 3s ease-out;
+            }
+            .w2rotate6 {
+              transform: rotate(4750deg);
+              transition: transform 3s ease-out;
+            }
+            .w2rotate7 {
+              transform: rotate(4705deg);
+              transition: transform 3s ease-out;
+            }
+          }
         }
       }
       &-speed {
@@ -805,11 +873,11 @@ $standardWidth: 750;
   top: 33vw;
   left: 15vw;
   .bingo-image {
-    width: 60vw;
+    width: 100%;
     left: 0;
     right: 0;
     margin: 0 auto;
-    top: 18vw;
+    top: 0vw;
   }
 }
 .gridCell {
@@ -885,8 +953,8 @@ $standardWidth: 750;
     }
   }
   .content {
-    width: 67%;
-    height: 62vw;
+    width: 90%;
+    height: 60vw;
     .body-text {
       color: white;
       font-size: 3.5vw;
@@ -896,17 +964,7 @@ $standardWidth: 750;
         width: 100%;
         max-height: 53vw;
         flex-wrap: wrap;
-        gap: 3vw;
-        img {
-          background-image: url(./assets/Reward-Base.png);
-          background-size: 100% 100%;
-          padding: 1vw;
-          width: 15vw;
-        }
-        .name {
-          font-size: 2.5vw;
-          line-height: 3vw;
-        }
+        gap: 2vw;
       }
       .rews-box-max {
         width: 100%;
@@ -914,13 +972,23 @@ $standardWidth: 750;
         flex-wrap: wrap;
         gap: 2vw;
         overflow-y: scroll;
-        .name {
-          font-size: 2.8vw;
-          line-height: 3vw;
+      }
+      .name {
+        font-size: 2.5vw;
+        line-height: 3vw;
+        color: #ffcd6d;
+      }
+      .img-box {
+        background-image: url(./assets/Reward-Base.png);
+        background-size: 100% 100%;
+        width: 15vw;
+        height: 17vw;
+        img {
+          width: 11vw;
         }
       }
       .rews-box-max::-webkit-scrollbar {
-        background-color: white;
+        background-color: #1cbcc8;
         background-size: 100% 100%;
         width: 1vw;
       }
@@ -930,7 +998,7 @@ $standardWidth: 750;
       }
       .rews-box-max::-webkit-scrollbar-thumb {
         border-radius: 10px;
-        background-color: #28a745;
+        background-color: #2e0738;
         background-size: 100% 100%;
         width: 5vw;
         height: 5vw;
@@ -985,40 +1053,40 @@ $standardWidth: 750;
   button {
     color: #51274c;
     font-family: tangoSansItalic;
-    font-size: 3.2vw;
-    width: 20vw;
+    font-size: 3vw;
+    width: 17vw;
     height: 10vw;
     font-weight: bold;
-    &:nth-child(1) {
-      background-image: url(./assets/SlideButtonBaseLeft.png);
-      background-size: 100% 100%;
-      left: 0;
-      top: 80vw;
-      z-index: 3;
-      padding-right: 3vw;
-    }
-    &:nth-child(2) {
-      background-image: url(./assets/SlideButtonBaseRight.png);
-      background-size: 100% 100%;
-      right: 0;
-      top: 80vw;
-      z-index: 3;
-      padding-left: 2vw;
-    }
-    &:nth-child(3) {
-      background-image: url(./assets/SlideButtonBaseLeft.png);
-      background-size: 100% 100%;
-      left: 0;
-      z-index: 2;
-      padding-right: 4vw;
-    }
-    &:nth-child(4) {
-      background-image: url(./assets/SlideButtonBaseRight.png);
-      background-size: 100% 100%;
-      right: 0;
-      z-index: 2;
-      padding-left: 3vw;
-    }
+  }
+  .guideBtn {
+    background-image: url(./assets/SlideButtonBaseLeft.png);
+    background-size: 100% 100%;
+    left: 0;
+    top: 80vw;
+    z-index: 3;
+    padding-right: 3vw;
+  }
+  .giftingBtn {
+    background-image: url(./assets/SlideButtonBaseRight.png);
+    background-size: 100% 100%;
+    right: 0;
+    top: 80vw;
+    z-index: 3;
+    padding-left: 2vw;
+  }
+  .DetailsBtn {
+    background-image: url(./assets/SlideButtonBaseLeft.png);
+    background-size: 100% 100%;
+    left: 0;
+    z-index: 2;
+    padding-right: 4vw;
+  }
+  .RecordsBtn {
+    background-image: url(./assets/SlideButtonBaseRight.png);
+    background-size: 100% 100%;
+    right: 0;
+    z-index: 2;
+    padding-left: 3vw;
   }
 }
 .event-gifts {
@@ -1103,7 +1171,7 @@ $standardWidth: 750;
         width: 78%;
       }
       .arrow {
-        width: 7vw;
+        width: 6vw;
         position: absolute;
         right: 2vw;
         top: 7vw;
@@ -1353,14 +1421,14 @@ $standardWidth: 750;
         width: 93%;
         .rank {
           width: 80%;
-          top: 8vw;
+          top: 7vw;
           font-size: 3.5vw;
           color: white;
           height: 10vw;
         }
         .rewardImg {
           width: 100%;
-          height: 100%;
+          height: 32vw;
           &-box {
             width: 22vw;
           }
@@ -1405,6 +1473,133 @@ $standardWidth: 750;
         height: 2vw;
         width: 2vw;
       }
+    }
+  }
+}
+.footer {
+  width: 100%;
+  height: 15vw;
+  font-size: 4vw;
+}
+.btn-up {
+  width: 8vw;
+  position: fixed;
+  bottom: 5vw;
+  right: 19vw;
+  cursor: pointer;
+  z-index: 3;
+  img {
+    width: 100%;
+  }
+}
+.rewards-history {
+  background-image: url(./assets/popups/Records/bg.png);
+  background-size: 100% 100%;
+  width: 100%;
+  height: 110vw;
+  display: flex;
+  justify-content: center;
+  padding: 7vw 0 11vw 0;
+  .head {
+    width: 70%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: -9vw;
+  }
+  .inner-content {
+    width: 98%;
+    margin: 0 auto;
+    padding: 7vw 0;
+    margin-bottom: 2vw;
+    .table {
+      width: 90%;
+      overflow: hidden;
+      font-size: 2.7vw;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 2vw;
+      .heading {
+        width: 95%;
+        background-color: #da9c00;
+        height: 10vw;
+        margin: 0 auto;
+        color: white;
+        font-size: 4vw;
+        div {
+          border: 1px solid white;
+        }
+      }
+      .table-data {
+        height: 85vw;
+        padding: 0 2vw;
+        gap: 1vw;
+        overflow-x: hidden;
+      }
+      .table-data-max {
+        height: 85vw;
+        overflow-y: scroll;
+        padding: 0 2vw;
+        gap: 1vw;
+        overflow-x: hidden;
+      }
+      .table-data-max::-webkit-scrollbar {
+        background-color: black;
+        background-size: 100% 100%;
+        width: 1vw;
+      }
+      .table-data-max::-webkit-scrollbar-track {
+        background-color: white;
+        border-radius: 10px;
+      }
+      .table-data-max::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #1cbcc8;
+        background-size: 100% 100%;
+        width: 5vw;
+        height: 5vw;
+      }
+      .rews {
+        .rew-img {
+          width: 12vw;
+          height: 12vw;
+          background-image: url(./assets/Reward-Base.png);
+          background-size: 100% 100%;
+          border-radius: 1vw;
+          img {
+            width: 8vw;
+          }
+        }
+        .desc {
+          font-size: 2vw;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .modal-close {
+    width: 10vw;
+    right: 2vw;
+    top: -15vw;
+    img {
+      width: 10vw;
+    }
+  }
+  .see-btn {
+    background-color: #2e0738;
+    width: 20vw;
+    height: 4vw;
+    margin: auto;
+    padding: 2vw;
+    margin-top: 5vw;
+    border: 1.5px solid #e1a72e;
+    border-radius: 5vw;
+    button {
+      width: 100%;
+      color: white;
+      margin: 0 auto;
+      height: 100%;
     }
   }
 }

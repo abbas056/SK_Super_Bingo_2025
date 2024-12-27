@@ -10,8 +10,8 @@ function BingoRewards({ giftingSubButtons, eventGifting, rewards, potImage, icon
       className="rewards-box p-rel m-auto d-flex fd-column al-center jc-sEven f-tangoItalic"
       style={
         eventGifting
-          ? { backgroundImage: `url(${tab1RewardsBg})`, marginTop: " !important" }
-          : { backgroundImage: `url(${tab1RewardsBg})`, marginTop: "12vw" }
+          ? { backgroundImage: `url(${tab1RewardsBg})`, marginTop: " !important", width: "90%" }
+          : { backgroundImage: `url(${tab1RewardsBg})`, marginTop: "12vw", width: "95%" }
       }
     >
       {eventGifting ? null : <img className="title p-abs" src={rewardsTag} alt="" />}

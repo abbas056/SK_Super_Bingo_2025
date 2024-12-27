@@ -2,7 +2,7 @@ import React from "react";
 import BingoGrid from "./../BingoGrid";
 import { beanIcon } from "../../utils/images";
 
-function BingoGame() {
+function BingoGame({ gamePoints }) {
   return (
     <div className="bingo-game d-flex fd-column al-center jc-start m-auto">
       <div className="info-text d-flex al-center jc-center gap-1 m-auto">
@@ -11,7 +11,7 @@ function BingoGame() {
           1777 <img className="w-5vw" src={beanIcon} alt="" /> Rewards
         </span>
       </div>
-      <BingoGrid />
+      <BingoGrid gamePoints={gamePoints} />
     </div>
   );
 }

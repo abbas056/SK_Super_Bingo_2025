@@ -35,7 +35,10 @@ function LeaderBoard({
   };
   return (
     <>
-      <div className="leaderboard p-rel m-auto f-tangoSansItalic" style={{ width: "95%", marginTop: "10vw" }}>
+      <div
+        className="leaderboard p-rel m-auto f-tangoSansItalic"
+        style={eventGifting ? { width: "90%", marginTop: "10vw" } : { width: "95%", marginTop: "10vw" }}
+      >
         <div className="leaderboard-title m-auto p-abs d-flex al-center jc-center c-white">
           <img src={title} alt="" />
         </div>
@@ -66,6 +69,7 @@ function LeaderBoard({
                                 tab1={tab1}
                                 eventGifting={eventGifting}
                                 icon={icon}
+                                subTabs={subTabs}
                               />
                             </div>
                           );
@@ -91,6 +95,7 @@ function LeaderBoard({
                                 tab1={tab1}
                                 eventGifting={eventGifting}
                                 icon={icon}
+                                subTabs={subTabs}
                               />
                             </div>
                           ))}
@@ -113,7 +118,7 @@ function LeaderBoard({
                         style={{ maxHeight: `${maxheight}` }}
                       >
                         {restWinners &&
-                          restWinners?.map(({ nickname, userScore, userLevel, actorLevel, portrait, userId }, index) => (
+                          restWinners?.map(({ nickname, userScore, userLevel, actorLevel, portrait, userId, desc }, index) => (
                             <div key={index}>
                               <RestWinners
                                 userName={nickname}
@@ -125,6 +130,7 @@ function LeaderBoard({
                                 userLevel={userLevel}
                                 actorLevel={actorLevel}
                                 tab2={tab2}
+                                desc={desc}
                               />
                             </div>
                           ))}
