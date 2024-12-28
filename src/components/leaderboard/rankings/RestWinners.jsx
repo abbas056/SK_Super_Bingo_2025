@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { captureImageError, formatData, goTo } from "../../../js/helpers";
+import { captureImageError, estBeans, formatData, goTo } from "../../../js/helpers";
 import { baserUrl } from "../../../js/baserUrl";
 import { ApiContext } from "../../../services/Api";
 import { onwardFrame, unknown } from "../../../utils/images";
@@ -18,8 +18,10 @@ function RestWinners({
   tab2,
   desc,
   eventGifting,
+  giftingSubButtons,
   icon,
   subTabs,
+  beansPotValue,
 }) {
   const { isLive } = useContext(ApiContext);
 
@@ -60,16 +62,32 @@ function RestWinners({
               <img onError={captureImageError} className="rank-user-image" src={userAvatar ? userAvatar : unknown} alt="" />
               <img className="rank-border-image p-rel" src={onwardFrame} alt="" />
             </div>
-            <div className="user-info d-flex fd-column gap-1">
+            <div className="user-info d-flex fd-column">
               <span className="username">{userName && userName.slice(0, 12)}</span>
               <img style={{ width: `${lvlIconWidth}` }} src={levelUrl + level + ".png"} alt="" />
             </div>
           </div>
         </div>
         {tab2 ? (
-          <div className="rewards-slide d-flex al-center jc-end gap-1">
+          <div className="rewards-slide d-flex al-center jc-center gap-1">
             <LeaderBoardSlider description={formatData(arrayDesc)} />
           </div>
+        ) : eventGifting && giftingSubButtons?.Daily ? (
+          <>
+            {listNumber <= 5 && (
+              <div className="est-points d-flex fd-column al-center jc-center">
+                <span>Est Beans:</span>
+                <div className="d-flex al-center jc-center">
+                  <img style={{ width: "4vw", height: "4vw" }} src={icon} alt="" />
+                  {estBeans(eventGifting, beansPotValue, listNumber)}
+                </div>
+              </div>
+            )}
+            <div className="est-rew d-flex al-center jc-start">
+              <img style={{ width: "4vw", height: "4vw" }} src={icon} alt="" />
+              <span>{userScore}</span>
+            </div>
+          </>
         ) : (
           <div className="est-rew d-flex al-center jc-start">
             <img style={{ width: "4vw", height: "4vw" }} src={icon} alt="" />

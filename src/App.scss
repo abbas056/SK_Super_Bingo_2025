@@ -49,7 +49,7 @@ $standardWidth: 750;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 7vw;
+  margin-bottom: 4vw;
   .marquee-alternative {
     margin: auto;
     margin-left: 3vw;
@@ -174,8 +174,8 @@ $standardWidth: 750;
         background: transparent;
         background-image: url(./assets/SpeedBase.png);
         background-size: 100% 100%;
-        width: 50%;
-        height: 8vw;
+        width: 60%;
+        height: 9vw;
         border: none;
         color: white;
         text-align: center;
@@ -519,13 +519,13 @@ $standardWidth: 750;
         .users-details-onward {
           background-image: url(./assets/UserDetailBase.png);
           background-size: 100% 100%;
-          width: 85%;
+          width: 90%;
           height: 15vw;
           margin: 0 auto;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0 5vw 0 5vw;
+          padding: 0 3vw 0 3vw;
           .rank-id {
             width: 5vw;
             font-size: 3vw;
@@ -556,20 +556,30 @@ $standardWidth: 750;
             text-align: left;
             .username {
               font-size: 3vw;
+              width: 15vw;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
             }
           }
           .est-rew {
             width: 20vw;
             height: 8vw;
-            font-size: 2.7vw;
+            font-size: 2.5vw;
             text-align: left;
             img {
               width: 3vw;
               height: 3vw;
             }
           }
+          .est-points {
+            font-size: 2.2vw;
+            color: white;
+            width: 15vw;
+            align-items: start;
+          }
           .rewards-slide {
-            width: 35vw;
+            width: 30vw;
             font-size: 2.8vw;
             font-weight: bold;
             text-align: left;
@@ -942,8 +952,8 @@ $standardWidth: 750;
   .success {
     background-image: url(./assets/popups/largebg.png);
     background-size: 100% 100%;
-    width: 85%;
-    height: 90vw;
+    width: 90%;
+    height: 105vw;
     color: white;
     margin: 0 auto;
     .head {
@@ -954,12 +964,11 @@ $standardWidth: 750;
   }
   .content {
     width: 90%;
-    height: 60vw;
+    margin-top: 6vw;
     .body-text {
       color: white;
-      font-size: 3.5vw;
-      width: 100%;
-      font-weight: bold;
+      font-size: 4vw;
+      width: 90%;
       .rews-box {
         width: 100%;
         max-height: 53vw;
@@ -968,7 +977,7 @@ $standardWidth: 750;
       }
       .rews-box-max {
         width: 100%;
-        max-height: 53vw;
+        max-height: 50vw;
         flex-wrap: wrap;
         gap: 2vw;
         overflow-y: scroll;
@@ -1053,7 +1062,7 @@ $standardWidth: 750;
   button {
     color: #51274c;
     font-family: tangoSansItalic;
-    font-size: 3vw;
+    font-size: 2.8vw;
     width: 17vw;
     height: 10vw;
     font-weight: bold;
@@ -1267,7 +1276,6 @@ $standardWidth: 750;
   background-image: url(./assets/popups/Details/bg.png);
   background-size: 100% 100%;
   width: 95%;
-  height: 95vw;
   padding: 15vw 0 10vw 0;
   color: white;
   .title {
@@ -1280,16 +1288,21 @@ $standardWidth: 750;
   .inner-content {
     width: 80%;
     .head {
-      background-color: #da9c00;
       font-size: 3vw;
       color: white;
       div {
-        background-color: #e37820;
+        background-color: #da9c00;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 3vw 0;
         border: 1px solid white;
+        &:first-child {
+          border-radius: 5vw 0 0 0;
+        }
+        &:last-child {
+          border-radius: 0 5vw 0 0;
+        }
       }
     }
     .body {
@@ -1301,6 +1314,12 @@ $standardWidth: 750;
         border: 1px solid white;
         padding: 2vw 0;
         font-size: 3vw;
+        &:first-child {
+          border-radius: 0 0 0 5vw;
+        }
+        &:last-child {
+          border-radius: 0 0 5vw 0;
+        }
       }
       .rew-img {
         width: 100%;
@@ -1499,13 +1518,13 @@ $standardWidth: 750;
   height: 110vw;
   display: flex;
   justify-content: center;
-  padding: 7vw 0 11vw 0;
+  padding: 12vw 0 8vw 0;
   .head {
-    width: 70%;
+    width: 75%;
     margin: auto;
     left: 0;
     right: 0;
-    top: -9vw;
+    top: -1vw;
   }
   .inner-content {
     width: 98%;
@@ -1520,14 +1539,20 @@ $standardWidth: 750;
       color: white;
       margin-bottom: 2vw;
       .heading {
-        width: 95%;
-        background-color: #da9c00;
+        width: 95.5%;
         height: 10vw;
         margin: 0 auto;
         color: white;
         font-size: 4vw;
         div {
+          background-color: #da9c00;
           border: 1px solid white;
+          &:first-child {
+            border-radius: 5vw 0 0 0;
+          }
+          &:last-child {
+            border-radius: 0 5vw 0 0;
+          }
         }
       }
       .table-data {
@@ -1546,7 +1571,7 @@ $standardWidth: 750;
       .table-data-max::-webkit-scrollbar {
         background-color: black;
         background-size: 100% 100%;
-        width: 1vw;
+        width: 0.6vw;
       }
       .table-data-max::-webkit-scrollbar-track {
         background-color: white;

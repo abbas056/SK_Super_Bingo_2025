@@ -157,7 +157,7 @@ function VipLuckyWheel({ talentPoints }) {
 
       <div className="overlay" style={{ visibility: alert ? "visible" : "hidden" }}>
         {alert && (
-          <div className="game-popup d-flex al-center jc-center">
+          <div className="game-popup d-flex al-center jc-center f-tangoSans">
             {alertpopup?.map((item, i) => (
               <div key={i} className="success p-rel d-flex al-center jc-center">
                 <img className="head p-abs" src={item?.headtext} alt="" />

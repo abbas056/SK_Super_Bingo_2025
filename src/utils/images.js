@@ -32,6 +32,7 @@ import giftingTitle from "../assets/popups/Guide/eventgifting.png";
 import wheelTitle from "../assets/popups/Guide/talentwheel.png";
 import eventGiftingTitle from "../assets/popups/EventGifting/title.png";
 import leaderboardTitle from "../assets/LeaderboardTitle.png";
+import winnersTitle from "../assets/Winnerstitle.png";
 import detailsTitle from "../assets/popups/Details/title.png";
 import congratulationHead from "../assets/popups/congratulations.png";
 import bingoHead from "../assets/popups/bingo.png";
@@ -87,6 +88,7 @@ export {
   bingoPopupImage,
   recordsTitle,
   btnDown,
+  winnersTitle,
 };
 export function rewardImages(rewDesc) {
   var rewImg;

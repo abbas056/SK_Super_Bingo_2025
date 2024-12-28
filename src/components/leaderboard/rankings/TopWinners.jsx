@@ -1,11 +1,25 @@
 import React, { useContext } from "react";
-import { captureImageError, goTo } from "../../../js/helpers";
+import { captureImageError, estBeans, goTo } from "../../../js/helpers";
 import beanIcon from "../../../assets/bean.png";
 import { ApiContext } from "../../../services/Api";
 import { baserUrl } from "../../../js/baserUrl";
 import { frame1, frame2, frame3, unknown } from "../../../utils/images";
 
-function TopWinners({ userName, userScore, userAvatar, userId, index, userLevel, actorLevel, tab1, subTabs, eventGifting, icon }) {
+function TopWinners({
+  userName,
+  userScore,
+  userAvatar,
+  userId,
+  index,
+  userLevel,
+  actorLevel,
+  tab1,
+  subTabs,
+  eventGifting,
+  icon,
+  beansPotValue,
+  giftingSubButtons,
+}) {
   const { isLive } = useContext(ApiContext);
 
   let levelUrl;
@@ -61,13 +75,15 @@ function TopWinners({ userName, userScore, userAvatar, userId, index, userLevel,
             <img style={{ width: "5vw", height: "5vw" }} src={icon} alt="" />
             <span> {userScore}</span>
           </div>
-          <div className="est-points d-flex al-center jc-center">
-            <span>Est Beans:</span>
-            <div className="d-flex al-center jc-center">
-              <img style={{ width: "3.5vw", height: "3.5vw" }} src={beanIcon} alt="" />
-              <span>00000</span>
+          {giftingSubButtons?.Overall ? null : (
+            <div className="est-points d-flex al-center jc-center">
+              <span>Est Beans:</span>
+              <div className="d-flex al-center jc-center">
+                <img style={{ width: "3.5vw", height: "3.5vw" }} src={icon} alt="" />
+                <span>{estBeans(eventGifting, beansPotValue, rank)}</span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

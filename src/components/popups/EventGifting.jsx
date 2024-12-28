@@ -110,6 +110,8 @@ function EventGifting({ close, eventGifting }) {
             eventGifting={eventGifting}
             icon={icon}
             subTabs={subTabs}
+            beansPotValue={beanPotValue}
+            giftingSubButtons={giftingSubButtons}
           />
         </div>
         <div className="close p-abs" onClick={close}>

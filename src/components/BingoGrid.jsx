@@ -65,8 +65,8 @@ const BingoGrid = ({ gamePoints }) => {
       setAlertpopup(
         unsuccessAlert(
           oopsHead,
-          <div className="w-100 d-flex al-center jc-center">
-            You don’t have enough Game Points <img style={{ width: "5vw", verticalAlign: "bottom" }} src={gamePointsIcon} alt="" /> to play BINGO
+          <div className="w-70">
+            You don’t have enough Game Points <img style={{ width: "5vw", verticalAlign: "middle" }} src={gamePointsIcon} alt="" /> to play BINGO
             right now. Send more event gifts & come back again.
           </div>
         )
@@ -80,7 +80,10 @@ const BingoGrid = ({ gamePoints }) => {
       .then((response) => {
         if (response.msg === "success") {
           const firstFill = response?.data?.firstFill;
+          const successRounds = response?.data?.successRounds;
           const updatedGrid = grid?.map((row) => row.map((cell) => (cell === firstFill ? "*" : cell)));
+          const numberMatch = response?.data?.rewardContent.match(/\d+/);
+          const extractedNumber = numberMatch ? numberMatch[0] : null;
           setGrid(updatedGrid);
 
           const isBingo = checkBingo(updatedGrid);
@@ -93,17 +96,20 @@ const BingoGrid = ({ gamePoints }) => {
                 isBingo ? bingoHead : congratulationHead,
                 isBingo ? (
                   <>
-                    <div>Congrats! You’ve completed BINGO (num_of_times_won) times successfully & have won</div>
+                    <div>
+                      Congrats! You’ve completed <br /> BINGO <span className="c-yellow">{successRounds}</span> times successfully <br /> & have won
+                    </div>
                     {renderRewards(response?.data?.rewardList)}
-                    You've also won xx Beans for winning Bingo! Your reward has been added to your ID.
+                    <span style={{ color: "#ffcd6d", fontSize: "2.8vw" }}>You've also won {extractedNumber} Beans for winning Bingo!</span>
+                    Your reward <br /> has been added to your ID.
                   </>
                 ) : (
                   <>
                     <div>
-                      You have successfully marked off <span className="c-yellow">{firstFill}</span> & have won.
+                      You have successfully <br /> marked off <span className="c-yellow">{firstFill}</span> <br />& have won.
                     </div>
                     {renderRewards(response?.data?.rewardList)}
-                    Continue marking off the number to achieve a winning pattern.
+                    Continue marking off the <br /> number to achieve a winning <br /> pattern.
                   </>
                 )
               )
@@ -145,8 +151,10 @@ const BingoGrid = ({ gamePoints }) => {
   const renderRewards = (rewardList) => (
     <div className={rewardList?.length > 4 ? "rews-box-max d-flex al-start jc-center gap-2" : "rews-box d-flex al-start jc-center gap-2"}>
       {rewardList?.map((item, index) => (
-        <div className="d-flex al-center jc-center fd-column gap-1" key={index} style={{ width: "25vw" }}>
-          <img src={rewardImages(item?.desc)} alt="" />
+        <div className="d-flex al-center jc-center fd-column gap-1" key={index} style={{ width: "20vw" }}>
+          <div className="img-box d-flex al-center jc-center">
+            <img src={rewardImages(item?.desc)} alt="" />
+          </div>
           <div className="name c-yellow f-bold">
             {item?.desc === "Beans" ? (
               <> {item?.count} Beans</>
@@ -166,6 +174,9 @@ const BingoGrid = ({ gamePoints }) => {
     setButtonDisabled(false);
     setAlert(false);
     setInput(1);
+    setTimeout(() => {
+      setBingo(false);
+    }, 500);
   };
 
   return (
@@ -208,12 +219,12 @@ const BingoGrid = ({ gamePoints }) => {
 
       <div className="overlay" style={{ visibility: alert ? "visible" : "hidden" }}>
         {alert && (
-          <div className="game-popup d-flex al-center jc-center">
+          <div className="game-popup d-flex al-center jc-center f-tangoSans">
             {alertpopup?.map((item, i) => (
               <div key={i} className="success p-rel d-flex al-center jc-center">
                 <img className="head p-abs" src={item?.headtext} alt="" />
                 <div className="content m-auto p-abs d-flex al-center jc-center">
-                  <div className="body-text d-flex al-center jc-center fd-column">{item.data}</div>
+                  <div className="body-text d-flex al-center jc-center fd-column gap-1">{item.data}</div>
                 </div>
                 <div className="modal-close p-abs" onClick={closePopup}>
                   <img src={cross()} alt="" />

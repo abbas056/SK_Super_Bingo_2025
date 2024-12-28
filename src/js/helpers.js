@@ -115,3 +115,28 @@ export const w2Rotation = (description, setSecondWheel) => {
     setSecondWheel("w2rotate7");
   }
 };
+export const estBeans = (eventGifting, value, rank) => {
+  let beans;
+  if (eventGifting) {
+    if (rank == 1) {
+      beans = Math.floor((value * 40) / 100);
+    } else if (rank == 2) {
+      beans = Math.floor((value * 30) / 100);
+    } else if (rank == 3) {
+      beans = Math.floor((value * 10) / 100);
+    } else if (rank == 4) {
+      beans = Math.floor((value * 10) / 100);
+    } else if (rank == 5) {
+      beans = Math.floor((value * 10) / 100);
+    }
+  } else {
+    if (rank == 1) {
+      beans = Math.floor((value * 50) / 100);
+    } else if (rank == 2) {
+      beans = Math.floor((value * 30) / 100);
+    } else if (rank == 3) {
+      beans = Math.floor((value * 20) / 100);
+    }
+  }
+  return beans;
+};

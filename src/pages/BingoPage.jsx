@@ -50,7 +50,8 @@ function BingoPage({ tab1 }) {
         subBtn2name={"Previous"}
         subTabs={subTabs}
         setSubTabs={setSubTabs}
-        icon={beanIcon}
+        icon={bingoWinsIcon}
+        beansPotValue={beansPot ? beansPot : 0}
       />
     </div>
   );

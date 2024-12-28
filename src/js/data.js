@@ -137,7 +137,7 @@ export const tab1Details = {
     {
       id: 1,
       button: "BINGO",
-      pointsReq: "30,000",
+      pointsReq: "30K",
       rewards: [
         {
           pic: `${baserUrl}streamkar/rewards/noRew.png`,
@@ -188,7 +188,7 @@ export const tab2Details = {
     {
       id: 1,
       button: "LUCKY WHEEL",
-      pointsReq: "25,000",
+      pointsReq: "25K",
       rewards: [
         {
           pic: `${baserUrl}streamkar/rewards/noRew.png`,
@@ -223,7 +223,7 @@ export const tab2Details = {
     {
       id: 2,
       button: "VIP LUCKY WHEEL",
-      pointsReq: "100,000",
+      pointsReq: "100K",
       rewards: [
         {
           pic: `${baserUrl}streamkar/rewards/bumblebee.png`,

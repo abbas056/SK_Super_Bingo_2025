@@ -8,7 +8,7 @@ const SliderItem = ({ item }) => {
       {
         <span className="desc" style={{ fontSize: "1.8vw", color: "white", textAlign: "center" }}>
           x
-          {item.desc === "Coins" || item.desc === "Beans" || item.desc === "Gems" ? (
+          {item.desc === "Coins" || item.desc === "Beans" || item.desc === "gems" ? (
             <>{item.count}</>
           ) : (
             <>

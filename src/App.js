@@ -85,7 +85,7 @@ const App = () => {
   return (
     <div className="App">
       <LanguageBar setLanguage={setLanguage} language={language} />
-      <img className="w-100 mb-4vw" src={header} alt="" />
+      <img className="w-100 mb-3vw" src={header} alt="" />
       <Marque />
       <MainButtons mainTabs={mainTabs} setMainTabs={setMainTabs} />
       <PopupButtons

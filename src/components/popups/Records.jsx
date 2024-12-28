@@ -3,7 +3,7 @@ import Loader from "../common/Loader";
 import { recordsTitle, rewardImages } from "../../utils/images";
 import { cross } from "../../js/helpers";
 
-function Records({ close, history, gameRecords, loadMoreHistory, isLoading }) {
+function Records({ close, gameRecords, loadMoreHistory, isLoading }) {
   let rewardsList = gameRecords[0] ? gameRecords.flat() : [];
 
   return (
@@ -15,7 +15,6 @@ function Records({ close, history, gameRecords, loadMoreHistory, isLoading }) {
             <div className="d-flex al-center jc-center w-40vw pt-2 pb-2">Time(GMT)</div>
             <div className="d-flex al-center jc-center w-60vw pt-2 pb-2">REWARDS</div>
           </div>
-
           <div className="d-flex al-center jc-center" style={{ width: "100%" }}>
             {rewardsList?.length === 0 ? (
               <p className="no-data f-acme w-100">No Records Found</p>

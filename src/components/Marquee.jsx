@@ -5,7 +5,7 @@ import { goTo, slicePlease } from "../js/helpers";
 import borderImg from "../assets/TickerTapeFrame.png";
 import { unknown } from "../utils/images";
 function Marque() {
-  const { userInfo, bingoToday, isLive } = useContext(ApiContext);
+  const { userInfo, bingoToday, isLive, tickertapeLuckyWheel, tickertapeVipLuckyWheel } = useContext(ApiContext);
   const winners = slicePlease(bingoToday?.list, 0, 3);
   const dailyWins = userInfo?.dailyScores;
 
@@ -27,22 +27,21 @@ function Marque() {
                         goTo(isLive, userId, userId);
                       }}
                     >
-                      // <img className="border-img p-abs" src={borderImg} alt="" />
+                      <img className="border-img p-abs" src={borderImg} alt="" />
                     </div>
                     <img className="user-img p-abs" src={item.portrait ? item.portrait : unknown} alt="" />
                     <div className="text">
                       <div className="content d-flex al-center fd-row">
                         <span className="nick-name">{nickName}</span>
                         <p className="d-flex al-center jc-center ">
-                          has Won{" "}
+                          has Won
                           <span className="c-yellow" style={{ marginRight: "1vw" }}>
                             {dailyWins}
-                          </span>{" "}
-                          BINGO games & has ranked{" "}
+                          </span>
+                          BINGO games & has ranked
                           <span className="c-yellow" style={{ marginRight: "1vw" }}>
-                            {" "}
-                            {item?.userLevel}{" "}
-                          </span>{" "}
+                            {item?.userLevel}
+                          </span>
                           in BINGO game.
                         </p>
                       </div>

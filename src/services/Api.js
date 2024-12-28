@@ -52,10 +52,10 @@ function EventProvider({ children }) {
           token: userInfo.token !== "" ? userInfo.token : null,
         });
       });
-      //  setUser({
-      //    uid: 596492375,
-      //    token: "A14F7F106263824E1485E3EE035EEF71FB",
-      //  });
+      // setUser({
+      //   uid: 596492375,
+      //   token: "A1CF527B7F913648929DB04F6F0AA665D9",
+      // });
     } catch (_error) {
       setUser({
         uid: 0,

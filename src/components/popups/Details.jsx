@@ -25,7 +25,7 @@ function Details({ close, mainTabs }) {
               <div className="d-flex w-100" key={i}>
                 <div className="box w-20 d-flex al-center jc-center">{data.button}</div>
                 <div className="box w-20 d-flex al-center jc-center">{data.pointsReq}</div>
-                <div className="box rewards-container d-flex al-center f-wrap jc-center gap-1 w-60">
+                <div className="box rewards-container d-flex al-start f-wrap jc-center gap-1 w-60">
                   {data.rewards.map((items, i) => {
                     return (
                       <div className=" d-flex fd-column al-center jc-center gap-1 w-30" key={i}>

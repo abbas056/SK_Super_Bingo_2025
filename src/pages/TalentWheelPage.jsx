@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import WheelGame from "../components/WheelGame";
-import leaderboardTitle from "../assets/LeaderboardTitle.png";
 import { slicePlease } from "../js/helpers";
 import { ApiContext } from "../services/Api";
 import LeaderBoard from "../components/leaderboard/LeaderBoad";
+import { winnersTitle } from "../utils/images";
 
 function TalentWheelPage({ tab2 }) {
   const { tickertapeLuckyWheel, tickertapeVipLuckyWheel } = useContext(ApiContext);
@@ -22,7 +22,7 @@ function TalentWheelPage({ tab2 }) {
   return (
     <div className="mt-5vw">
       <WheelGame wheelBtns={wheelBtns} setwheelBtns={setwheelBtns} />
-      <LeaderBoard title={leaderboardTitle} maxheight={"179vw"} restWinners={restWinners} arrayData={winners} tab2={tab2} />
+      <LeaderBoard title={winnersTitle} maxheight={"179vw"} restWinners={restWinners} arrayData={winners} tab2={tab2} />
     </div>
   );
 }

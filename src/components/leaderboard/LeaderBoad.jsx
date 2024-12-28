@@ -20,6 +20,8 @@ function LeaderBoard({
   subBtn2name,
   eventGifting,
   icon,
+  beansPotValue,
+  giftingSubButtons,
 }) {
   const { isLoading } = useContext(ApiContext);
   const [active, setActive] = useState(true);
@@ -68,8 +70,10 @@ function LeaderBoard({
                                 actorLevel={actorLevel}
                                 tab1={tab1}
                                 eventGifting={eventGifting}
+                                giftingSubButtons={giftingSubButtons}
                                 icon={icon}
                                 subTabs={subTabs}
+                                beansPotValue={beansPotValue}
                               />
                             </div>
                           );
@@ -94,8 +98,10 @@ function LeaderBoard({
                                 actorLevel={actorLevel}
                                 tab1={tab1}
                                 eventGifting={eventGifting}
+                                giftingSubButtons={giftingSubButtons}
                                 icon={icon}
                                 subTabs={subTabs}
+                                beansPotValue={beansPotValue}
                               />
                             </div>
                           ))}
