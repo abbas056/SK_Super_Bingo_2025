@@ -43,6 +43,12 @@ import btnUp from "../assets/BtnUppng.png";
 import btnDown from "../assets/BtnDownpng.png";
 import recordsTitle from "../assets/popups/Records/title.png";
 import { baserUrl } from "../js/baserUrl";
+import columnLine from "../assets/columnline.png";
+import rowLine from "../assets/rowLine.png";
+import diagonalLine from "../assets/diagonalLine.png";
+import vipWheelCenter from "../assets/vipwheelcenter.png";
+import luckyarrow from "../assets/luckyarrow.png";
+import vipluckyarrow from "../assets/vipwheelarrow.png";
 
 export {
   header,
@@ -89,6 +95,12 @@ export {
   recordsTitle,
   btnDown,
   winnersTitle,
+  columnLine,
+  rowLine,
+  diagonalLine,
+  vipWheelCenter,
+  luckyarrow,
+  vipluckyarrow,
 };
 export function rewardImages(rewDesc) {
   var rewImg;
@@ -142,16 +154,20 @@ export function rewardImages(rewDesc) {
     rewImg = baserUrl + "streamkar/rewards/gameMasterRoomSkin.png";
   } else if (rewDesc == "gems") {
     rewImg = baserUrl + "streamkar/rewards/gems.png";
-  } else if (rewDesc == "MasterMind room skin") {
-    rewImg = baserUrl + "streamkar/rewards/noRew.png";
+  } else if (rewDesc == "MasterMind room skin (NEW)") {
+    rewImg = baserUrl + "streamkar/rewards/MasterMindRoomSkin.png";
   } else if (rewDesc == "Game Master Battle frame") {
     rewImg = baserUrl + "streamkar/rewards/gameMasterFarme.png";
-  } else if (rewDesc == "MasterMind frame") {
-    rewImg = baserUrl + "streamkar/rewards/noRew.png";
+  } else if (rewDesc == "MasterMind frame (NEW)") {
+    rewImg = baserUrl + "streamkar/rewards/mastermind.png";
   } else if (rewDesc == "Bumblebee entrance") {
     rewImg = baserUrl + "streamkar/rewards/bumblebee.png";
   } else if (rewDesc == "Enlightening Room Skin") {
     rewImg = baserUrl + "streamkar/rewards/enlighteningRoom.png";
+  } else if (rewDesc == "Monarch Room Skin") {
+    rewImg = baserUrl + "streamkar/rewards/monarchRoom.png";
+  } else if (rewDesc == "Game Battle frame") {
+    rewImg = baserUrl + "streamkar/rewards/gameMasterFarme.png";
   } else {
     rewImg = baserUrl + "streamkar/rewards/noRew.png";
   }

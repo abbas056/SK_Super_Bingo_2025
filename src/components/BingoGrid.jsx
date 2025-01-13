@@ -2,19 +2,31 @@ import React, { useContext, useEffect, useState } from "react";
 import { ApiContext } from "../services/Api";
 import { baserUrl } from "../js/baserUrl";
 import { callDartApi, cross, overFlowAuto, overFlowHidden, successAlert, unsuccessAlert } from "../js/helpers";
-import { bingoPlayBtn, gamePointsIcon, rewardImages, star, bingoHead, congratulationHead, oopsHead, bingoPopupImage } from "../utils/images";
+import {
+  bingoPlayBtn,
+  gamePointsIcon,
+  rewardImages,
+  star,
+  bingoHead,
+  congratulationHead,
+  oopsHead,
+  bingoPopupImage,
+  columnLine,
+  rowLine,
+} from "../utils/images";
 
 const BingoGrid = ({ gamePoints }) => {
-  const { userInfo, userId, userToken, refreshApi } = useContext(ApiContext);
+  const { userInfo, userId, userToken, refreshApi, disable, setDisable } = useContext(ApiContext);
   const [grid, setGrid] = useState([]);
   const [alert, setAlert] = useState(false);
   const [alertpopup, setAlertpopup] = useState([]);
   const [bingo, setBingo] = useState(false);
   const [input, setInput] = useState(1);
   const [error, setError] = useState("Max value = 999");
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [successCount, setsuccessCount] = useState("");
+  const [cutline, setCutline] = useState(null);
+  const [response, setresponse] = useState([]);
 
-  // Handle input changes
   const handleInput = (event) => {
     let value = event.target.value;
     let max = gamePoints < 999 ? gamePoints : 999;
@@ -23,7 +35,7 @@ const BingoGrid = ({ gamePoints }) => {
     setInput(number);
     if (event.target.value === "") {
       setError("Enter some value");
-      setButtonDisabled(true);
+      setDisable(true);
     } else if (number === max && value.includes(".")) {
       setInput(1);
     } else if (
@@ -40,10 +52,10 @@ const BingoGrid = ({ gamePoints }) => {
     ) {
       setInput(number);
       setError("Wrong input value");
-      setButtonDisabled(true);
+      setDisable(true);
     } else {
       setError("Max value = 999");
-      setButtonDisabled(false);
+      setDisable(false);
     }
   };
 
@@ -57,56 +69,51 @@ const BingoGrid = ({ gamePoints }) => {
       overFlowHidden();
     }
   }, [userInfo]);
-
-  // Play the game
   const playGame = () => {
-    if (gamePoints < 30000) {
-      setAlert(true);
-      setAlertpopup(
-        unsuccessAlert(
-          oopsHead,
-          <div className="w-70">
-            You don’t have enough Game Points <img style={{ width: "5vw", verticalAlign: "middle" }} src={gamePointsIcon} alt="" /> to play BINGO
-            right now. Send more event gifts & come back again.
-          </div>
-        )
-      );
-      overFlowHidden();
-      return;
-    }
-
-    setButtonDisabled(true);
+    setDisable(true);
     callDartApi(`${baserUrl}api/activity/bingo/bingo?playCount=${input}`, userId, userToken)
       .then((response) => {
         if (response.msg === "success") {
+          setresponse(response?.data);
           const firstFill = response?.data?.firstFill;
           const successRounds = response?.data?.successRounds;
           const updatedGrid = grid?.map((row) => row.map((cell) => (cell === firstFill ? "*" : cell)));
-          const numberMatch = response?.data?.rewardContent.match(/\d+/);
-          const extractedNumber = numberMatch ? numberMatch[0] : null;
+          const bonusBeans = response?.data?.bonus;
+          const bingoResult = checkBingo(updatedGrid);
+          setBingo(bingoResult.isBingo);
+          setCutline(bingoResult.cutline); // Save cutline details
           setGrid(updatedGrid);
-
-          const isBingo = checkBingo(updatedGrid);
-          setBingo(isBingo);
-
+          setTimeout(() => {
+            setsuccessCount(successRounds);
+          }, 500);
           setTimeout(() => {
             setAlert(true);
             setAlertpopup(
               successAlert(
-                isBingo ? bingoHead : congratulationHead,
-                isBingo ? (
+                successRounds >= 1 ? bingoHead : congratulationHead,
+                successRounds >= 1 ? (
                   <>
                     <div>
-                      Congrats! You’ve completed <br /> BINGO <span className="c-yellow">{successRounds}</span> times successfully <br /> & have won
+                      Congrats! You’ve completed <br /> BINGO{" "}
+                      <span className="c-l-yellow">{successRounds === 1 ? `${successRounds} time` : `${successRounds} times`}</span> successfully{" "}
+                      <br /> & have won
                     </div>
                     {renderRewards(response?.data?.rewardList)}
-                    <span style={{ color: "#ffcd6d", fontSize: "2.8vw" }}>You've also won {extractedNumber} Beans for winning Bingo!</span>
+                    <span style={{ color: "#ffcd6d", fontSize: "2.8vw" }}>You've also won {bonusBeans} Beans for winning Bingo!</span>
                     Your reward <br /> has been added to your ID.
+                  </>
+                ) : input > 1 && successRounds === 0 ? (
+                  <>
+                    <div>
+                      You have successfully <br /> marked off <span className="c-l-yellow">{input}</span> random numbers <br />& have won.
+                    </div>
+                    {renderRewards(response?.data?.rewardList)}
+                    Continue marking off the <br /> numbers to win.
                   </>
                 ) : (
                   <>
                     <div>
-                      You have successfully <br /> marked off <span className="c-yellow">{firstFill}</span> <br />& have won.
+                      You have successfully <br /> marked off <span className="c-l-yellow">{firstFill}</span> <br />& have won.
                     </div>
                     {renderRewards(response?.data?.rewardList)}
                     Continue marking off the <br /> number to achieve a winning <br /> pattern.
@@ -117,37 +124,65 @@ const BingoGrid = ({ gamePoints }) => {
 
             refreshApi();
             overFlowHidden();
-          }, 500);
+          }, 1000);
+        } else if (response.msg === "GAME_POINT_NOT_ENOUGH") {
+          setAlert(true);
+          setAlertpopup(
+            unsuccessAlert(
+              oopsHead,
+              <div className="w-70">
+                You don’t have enough Game Points <img style={{ width: "5vw", verticalAlign: "middle" }} src={gamePointsIcon} alt="" /> to play BINGO
+                right now. Send more event gifts & come back again.
+              </div>
+            )
+          );
+          overFlowHidden();
         } else {
-          showErrorPopup(response.msg);
+          setAlert(true);
+          setAlertpopup(unsuccessAlert(oopsHead, response.msg));
+          overFlowHidden();
         }
       })
       .catch((error) => {
-        showErrorPopup(error.message);
+        setAlert(true);
+        setAlertpopup(unsuccessAlert(oopsHead, error.message));
+        overFlowHidden();
       });
   };
-
-  // Show error popup
-  const showErrorPopup = (message) => {
-    setAlert(true);
-    setAlertpopup(unsuccessAlert(oopsHead, message));
-    overFlowHidden();
-  };
-
-  // Check for Bingo conditions
   const checkBingo = (grid) => {
-    for (let row of grid) {
-      if (row.every((cell) => cell === "*")) return true;
-    }
-    for (let col = 0; col < grid[0]?.length; col++) {
-      if (grid?.every((row) => row[col] === "*")) return true;
-    }
-    const leftDiagonal = grid?.every((_, index) => grid[index][index] === "*");
-    const rightDiagonal = grid?.every((_, index) => grid[index][grid?.length - 1 - index] === "*");
-    return leftDiagonal || rightDiagonal;
-  };
+    let cutline = null;
 
-  // Render rewards
+    // Check rows
+    for (let i = 0; i < grid.length; i++) {
+      if (grid[i].every((cell) => cell === "*")) {
+        cutline = { type: "row", index: i };
+        return { isBingo: true, cutline };
+      }
+    }
+
+    // Check columns
+    for (let i = 0; i < grid[0].length; i++) {
+      if (grid.every((row) => row[i] === "*")) {
+        cutline = { type: "column", index: i };
+        return { isBingo: true, cutline };
+      }
+    }
+
+    // Check diagonals
+    const leftDiagonal = grid.every((_, index) => grid[index][index] === "*");
+    if (leftDiagonal) {
+      cutline = { type: "diagonal", direction: "left" };
+      return { isBingo: true, cutline };
+    }
+
+    const rightDiagonal = grid.every((_, index) => grid[index][grid.length - 1 - index] === "*");
+    if (rightDiagonal) {
+      cutline = { type: "diagonal", direction: "right" };
+      return { isBingo: true, cutline };
+    }
+
+    return { isBingo: false, cutline: null };
+  };
   const renderRewards = (rewardList) => (
     <div className={rewardList?.length > 4 ? "rews-box-max d-flex al-start jc-center gap-2" : "rews-box d-flex al-start jc-center gap-2"}>
       {rewardList?.map((item, index) => (
@@ -155,9 +190,9 @@ const BingoGrid = ({ gamePoints }) => {
           <div className="img-box d-flex al-center jc-center">
             <img src={rewardImages(item?.desc)} alt="" />
           </div>
-          <div className="name c-yellow f-bold">
+          <div className="name c-l-yellow f-bold f-tangoSansItalic">
             {item?.desc === "Beans" ? (
-              <> {item?.count} Beans</>
+              <> x{item?.count} Beans</>
             ) : (
               <>
                 {item.desc} x{item.count} {item.count === 1 ? "day" : "days"}
@@ -168,22 +203,54 @@ const BingoGrid = ({ gamePoints }) => {
       ))}
     </div>
   );
-
   const closePopup = () => {
     overFlowAuto();
-    setButtonDisabled(false);
+    setDisable(false);
     setAlert(false);
     setInput(1);
     setTimeout(() => {
       setBingo(false);
+      setsuccessCount("");
+      setCutline(null);
     }, 500);
+  };
+  const renderCutline = () => {
+    if (!cutline) return null;
+    // if (successCount >= 1) {
+    //   return (
+    //     <img
+    //       src={rowLine}
+    //       alt="Diagonal Cutline"
+    //       className={`cutline diagonal-cutline ${cutline.direction === "left" ? "left-diagonal" : "right-diagonal"}`}
+    //     />
+    //   );
+    // }
+    if (cutline.type === "row") {
+      return <img src={rowLine} alt="Row Cutline" className={`cutline row-cutline row-${cutline.index}`} />;
+    }
+
+    if (cutline.type === "column") {
+      return <img src={columnLine} alt="Column Cutline" className={`cutline column-cutline column-${cutline.index}`} />;
+    }
+
+    if (cutline.type === "diagonal") {
+      return (
+        <img
+          src={rowLine}
+          alt="Diagonal Cutline"
+          className={`cutline diagonal-cutline ${cutline.direction === "left" ? "left-diagonal" : "right-diagonal"}`}
+        />
+      );
+    }
+
+    return null;
   };
 
   return (
     <>
-      <div className="bingo-game-container p-rel">
+      <div className="bingo-game-container p-rel f-tangoSans">
         <div className="gridContainer p-rel">
-          {bingo && <img className="bingo-image p-abs" src={bingoPopupImage} alt="" />}
+          {successCount >= 1 && <img className="bingo-image p-abs" src={bingoPopupImage} alt="" />}
           {grid?.map((row, rowIndex) =>
             row?.map((cell, cellIndex) => (
               <div key={`${rowIndex}-${cellIndex}`} className="gridCell">
@@ -191,6 +258,7 @@ const BingoGrid = ({ gamePoints }) => {
               </div>
             ))
           )}
+          {renderCutline()}
         </div>
       </div>
       <div className="bingo-game-bottom d-flex al-center jc-center">
@@ -210,8 +278,8 @@ const BingoGrid = ({ gamePoints }) => {
           </div>
         </div>
         <div className="play-button gap-1">
-          <button onClick={playGame} disabled={buttonDisabled}>
-            <img className={buttonDisabled ? "gray-1" : "gray-0"} src={bingoPlayBtn} alt="" />
+          <button onClick={playGame} disabled={disable}>
+            <img className={disable ? "gray-1" : "gray-0"} src={bingoPlayBtn} alt="" />
           </button>
           <span>30k Game Pts Req</span>
         </div>
@@ -221,10 +289,20 @@ const BingoGrid = ({ gamePoints }) => {
         {alert && (
           <div className="game-popup d-flex al-center jc-center f-tangoSans">
             {alertpopup?.map((item, i) => (
-              <div key={i} className="success p-rel d-flex al-center jc-center">
+              <div
+                key={i}
+                className="success p-rel d-flex al-center jc-center"
+                style={
+                  response?.rewardList?.length <= 3
+                    ? { height: "85vw" }
+                    : response?.rewardList?.length >= 4
+                    ? { height: "100vw" }
+                    : { height: "60vw" }
+                }
+              >
                 <img className="head p-abs" src={item?.headtext} alt="" />
                 <div className="content m-auto p-abs d-flex al-center jc-center">
-                  <div className="body-text d-flex al-center jc-center fd-column gap-1">{item.data}</div>
+                  <div className="body-text d-flex al-center jc-center fd-column gap-2">{item.data}</div>
                 </div>
                 <div className="modal-close p-abs" onClick={closePopup}>
                   <img src={cross()} alt="" />

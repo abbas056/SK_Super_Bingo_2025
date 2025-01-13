@@ -38,7 +38,7 @@ function BingoPage({ tab1 }) {
         <img className="w-6vw" src={bingoWinsIcon} alt="" />
         Daily Bingo WIns: {dailyWins}
       </div>
-      <BingoRewards beanPotValue={beansPot} potImage={beanPot} rewards={tab1Rewards} icon={beanIcon} />
+      <BingoRewards tab1={tab1} beanPotValue={beansPot} potImage={beanPot} rewards={tab1Rewards} icon={beanIcon} />
       <LeaderBoard
         title={leaderboardTitle}
         maxheight={"125vw"}

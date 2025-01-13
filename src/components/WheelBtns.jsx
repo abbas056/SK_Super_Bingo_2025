@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { luckyWheelBtn, VipluckyWheelBtn } from "../utils/images";
+import { ApiContext } from "../services/Api";
 
 function WheelBtns({ wheelBtns, setwheelBtns }) {
+  const { disable } = useContext(ApiContext);
+
   const tabSwitch = (id) => {
     let newCat = {
       Lucky: false,
@@ -11,10 +14,10 @@ function WheelBtns({ wheelBtns, setwheelBtns }) {
   };
   return (
     <div className="wheel-buttons d-flex jc-center al-center m-auto p-rel">
-      <button onClick={() => tabSwitch(`Lucky`)} className={wheelBtns.Lucky ? "btn-active" : "btn"}>
+      <button disabled={disable} onClick={() => tabSwitch(`Lucky`)} className={wheelBtns.Lucky ? "btn-active" : "btn"}>
         <img src={luckyWheelBtn} alt="" />
       </button>
-      <button onClick={() => tabSwitch(`VipLucky`)} className={wheelBtns.VipLucky ? "btn-active" : "btn"}>
+      <button disabled={disable} onClick={() => tabSwitch(`VipLucky`)} className={wheelBtns.VipLucky ? "btn-active" : "btn"}>
         <img src={VipluckyWheelBtn} alt="" />
       </button>
     </div>

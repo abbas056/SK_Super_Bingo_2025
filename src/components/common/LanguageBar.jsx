@@ -19,7 +19,7 @@ function LanguageBar({ setLanguage, language }) {
     <div className="language-dropdown p-abs">
       <div className="selected-language" onClick={toggleDropdown}>
         {language ? language : "Select Language"}
-        <span className="d-flex">
+        <span className="d-flex box">
           <img src={isOpen ? up : down} alt="" />
         </span>
       </div>

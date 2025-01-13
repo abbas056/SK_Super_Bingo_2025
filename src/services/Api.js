@@ -17,8 +17,9 @@ function EventProvider({ children }) {
   const [gifterDailyToday, setgifterDailyToday] = useState([]);
   const [gifterDailyYesterday, setgifterDailyYesterday] = useState([]);
   const [gifterOverall, setgifterOverall] = useState([]);
-  const [tickertapeLuckyWheel, settickertapeLuckyWheel] = useState([]);
-  const [tickertapeVipLuckyWheel, settickertapeVipLuckyWheel] = useState([]);
+  const [talentWheel, setTalentWheel] = useState([]);
+  const [tickertapeTab2, setTickertapeTab2] = useState([]);
+  const [disable, setDisable] = useState(false);
   const [user, setUser] = useState({
     id: 0,
     uid: 0,
@@ -31,10 +32,8 @@ function EventProvider({ children }) {
   };
 
   const cd = new Date();
-  // Get the previous day
   const pd = new Date(cd);
   pd.setDate(cd.getDate() - 1);
-  // Function to format a date in "YYYY-MM-DD" format
   const formatDate = (date) => {
     const year = date.getUTCFullYear();
     const month = (date.getUTCMonth() + 1).toString().padStart(2, "0");
@@ -52,19 +51,15 @@ function EventProvider({ children }) {
           token: userInfo.token !== "" ? userInfo.token : null,
         });
       });
-      // setUser({
-      //   uid: 596492375,
-      //   token: "A1CF527B7F913648929DB04F6F0AA665D9",
-      // });
     } catch (_error) {
       setUser({
-        uid: 0,
-        token: "",
+        uid: 596492375,
+        token: "A1140084B4574F40619D898096BDE0CB59",
       });
+
       console.error("Can't get userInfo by window.phone.getUserInfo");
     }
   }, []);
-
   useEffect(() => {
     setIsLoading(true);
     if (user.uid > 0) {
@@ -80,7 +75,6 @@ function EventProvider({ children }) {
         });
     }
   }, [user, refresh]);
-
   useEffect(() => {
     setIsLoading(true);
     axios
@@ -131,7 +125,6 @@ function EventProvider({ children }) {
       })
       .catch((err) => console.log(err));
   }, [refresh]);
-
   useEffect(() => {
     setIsLoading(true);
     axios
@@ -165,9 +158,9 @@ function EventProvider({ children }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${baserUrl}api/activity/eidF/getWinnerRankInfo?eventDesc=20250124_bingo&rankIndex=1&pageNum=1&pageSize=20`)
+      .get(`${baserUrl}api/activity/eidF/getWinnerRankInfo?eventDesc=20250124_bingo&rankIndex=2&pageNum=1&pageSize=20`)
       .then((response) => {
-        settickertapeLuckyWheel(response.data);
+        setTalentWheel(response.data);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
@@ -175,9 +168,9 @@ function EventProvider({ children }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${baserUrl}api/activity/eidF/getWinnerRankInfo?eventDesc=20250124_bingo&rankIndex=2&pageNum=1&pageSize=20`)
+      .get(`${baserUrl}api/activity/eidF/getWinnerRankInfo?eventDesc=20250124_bingo&rankIndex=1&pageNum=1&pageSize=20`)
       .then((response) => {
-        settickertapeVipLuckyWheel(response.data);
+        setTickertapeTab2(response.data);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
@@ -189,6 +182,8 @@ function EventProvider({ children }) {
           isLoading,
           setIsLoading,
           refreshApi,
+          disable,
+          setDisable,
           isLive,
           CurrentDate,
           PreviousDate,
@@ -203,8 +198,8 @@ function EventProvider({ children }) {
           gifterDailyToday: gifterDailyToday?.data,
           gifterDailyYesterday: gifterDailyYesterday?.data,
           gifterOverall: gifterOverall?.data,
-          tickertapeLuckyWheel: tickertapeLuckyWheel?.data,
-          tickertapeVipLuckyWheel: tickertapeVipLuckyWheel?.data,
+          talentWheel: talentWheel?.data,
+          tickertapeTab2: tickertapeTab2?.data,
         }}
       >
         {children}

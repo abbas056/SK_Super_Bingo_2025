@@ -1,25 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import EventGifting from "./popups/EventGifting";
 import Guide from "./popups/Guide";
 import Details from "./popups/Details";
 import Records from "./popups/Records";
+import { ApiContext } from "../services/Api";
 
 function PopupButtons({ popupSwitch, mainTabs, close, popup, language, history, gameRecords, loadMoreHistory, isLoading }) {
+  const { disable } = useContext(ApiContext);
+
   return (
     <>
       <div className="popup-buttons">
-        <button className="p-fix guideBtn" onClick={() => popupSwitch("guide")}>
+        <button disabled={disable} className="p-fix guideBtn" onClick={() => popupSwitch("guide")}>
           Guide
         </button>
-        <button className="p-fix giftingBtn" onClick={() => popupSwitch("eventGifting")}>
+        <button style={{ fontSize: "2.8vw" }} disabled={disable} className="p-fix giftingBtn" onClick={() => popupSwitch("eventGifting")}>
           Event <br /> Gifitng
         </button>
         {mainTabs.tab1 ? (
-          <button className="p-abs DetailsBtn" style={mainTabs.tab1 ? { top: "155vw" } : { top: "174vw" }} onClick={() => popupSwitch("details")}>
+          <button
+            disabled={disable}
+            className="p-abs DetailsBtn"
+            style={mainTabs.tab1 ? { top: "145vw" } : { top: "174vw" }}
+            onClick={() => popupSwitch("details")}
+          >
             Details
           </button>
         ) : null}
-        <button className="p-abs RecordsBtn" style={mainTabs.tab1 ? { top: "155vw" } : { top: "174vw" }} onClick={() => popupSwitch("records")}>
+        <button
+          disabled={disable}
+          className="p-abs RecordsBtn"
+          style={mainTabs.tab1 ? { top: "145vw" } : { top: "170vw" }}
+          onClick={() => popupSwitch("records")}
+        >
           Records
         </button>
       </div>

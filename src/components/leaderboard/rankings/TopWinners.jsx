@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { captureImageError, estBeans, goTo } from "../../../js/helpers";
+import { captureImageError, estBeans, estBeansGifitng, goTo } from "../../../js/helpers";
 import beanIcon from "../../../assets/bean.png";
 import { ApiContext } from "../../../services/Api";
 import { baserUrl } from "../../../js/baserUrl";
@@ -19,6 +19,8 @@ function TopWinners({
   icon,
   beansPotValue,
   giftingSubButtons,
+  giftingDayButtons,
+  topWinners,
 }) {
   const { isLive } = useContext(ApiContext);
 
@@ -48,14 +50,20 @@ function TopWinners({
   let rank = index + 1;
 
   return (
-    <div className="innerData p-rel f-tangoItalic">
+    <div className="innerData p-rel">
       <div className={rank == 1 ? "first-user" : "runner-user"}>
         <div
           onClick={() => {
             goTo(isLive, userId, userId);
           }}
         >
-          <img onError={captureImageError} className="rank-user-image" src={userAvatar ? userAvatar : unknown} alt="" />
+          <img
+            style={topWinners?.length <= 2 || tab1 ? { left: "12vw" } : { left: "10.5vw" }}
+            onError={captureImageError}
+            className="rank-user-image"
+            src={userAvatar ? userAvatar : unknown}
+            alt=""
+          />
           <img className="rank-border-image p-rel" src={rank === 1 ? frame1 : rank === 2 ? frame2 : frame3} alt="" />
         </div>
       </div>
@@ -71,16 +79,33 @@ function TopWinners({
         <div className="username">{userName && userName.slice(0, 10)}</div>
         <img style={{ width: `${lvlIconWidth}` }} src={levelUrl + level + ".png"} alt="" />
         <div className="score-box d-flex fd-column al-center">
-          <div className="points d-flex al-center jc-center gap-1">
-            <img style={{ width: "5vw", height: "5vw" }} src={icon} alt="" />
+          <div className="points d-flex al-center jc-center">
+            <img style={{ width: "4vw", height: "4vw" }} src={icon} alt="" />
             <span> {userScore}</span>
           </div>
-          {giftingSubButtons?.Overall ? null : (
-            <div className="est-points d-flex al-center jc-center">
-              <span>Est Beans:</span>
+          {eventGifting ? (
+            <>
+              {giftingSubButtons?.Overall ? null : (
+                <div className="est-points d-flex al-center jc-center fd-column">
+                  <span>
+                    {subTabs.Talents
+                      ? `${giftingDayButtons.Today ? "Est Gems" : "Gems Won"}`
+                      : `${giftingDayButtons.Today ? "Est Beans" : "Rewards Won"}`}
+                    :
+                  </span>
+                  <div className="d-flex al-center jc-center">
+                    <img style={{ width: "3.5vw", height: "3.5vw" }} src={icon} alt="" />
+                    <span>{estBeansGifitng(eventGifting, subTabs, beansPotValue, rank)}</span>
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="est-points d-flex fd-column al-center jc-center">
+              <span>{subTabs.Today ? "Est Beans:" : "Beans Won:"}</span>
               <div className="d-flex al-center jc-center">
-                <img style={{ width: "3.5vw", height: "3.5vw" }} src={icon} alt="" />
-                <span>{estBeans(eventGifting, beansPotValue, rank)}</span>
+                <img style={{ width: "3.5vw", height: "3.5vw" }} src={beanIcon} alt="" />
+                <span>{estBeans(beansPotValue, rank)}</span>
               </div>
             </div>
           )}

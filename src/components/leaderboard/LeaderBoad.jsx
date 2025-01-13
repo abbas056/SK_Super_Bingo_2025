@@ -5,6 +5,7 @@ import { ApiContext } from "../../services/Api";
 import Loader from "../common/Loader";
 import SeeButton from "../common/SeeButton";
 import SubButtons from "../common/SubButtons";
+import GiftingSubButtons from "../GiftingSubButtons";
 
 function LeaderBoard({
   topWinners,
@@ -14,14 +15,17 @@ function LeaderBoard({
   title,
   tab1,
   tab2,
+  icon,
   subTabs,
   setSubTabs,
   subBtn1name,
   subBtn2name,
   eventGifting,
-  icon,
   beansPotValue,
-  giftingSubButtons,
+  giftinglbMiddleButtons,
+  setgiftinglbMiddleButtons,
+  giftinglbBottomButtons,
+  setgiftinglbBottomButtons,
 }) {
   const { isLoading } = useContext(ApiContext);
   const [active, setActive] = useState(true);
@@ -41,7 +45,10 @@ function LeaderBoard({
         className="leaderboard p-rel m-auto f-tangoSansItalic"
         style={eventGifting ? { width: "90%", marginTop: "10vw" } : { width: "95%", marginTop: "10vw" }}
       >
-        <div className="leaderboard-title m-auto p-abs d-flex al-center jc-center c-white">
+        <div
+          className="leaderboard-title m-auto p-abs d-flex al-center jc-center c-white"
+          style={arrayData?.count > 3 ? { top: "-6vw" } : { top: "-10vw" }}
+        >
           <img src={title} alt="" />
         </div>
         {isLoading ? (
@@ -50,7 +57,27 @@ function LeaderBoard({
           <>
             {tab1 || eventGifting ? (
               <>
-                {eventGifting ? null : <SubButtons subTabs={subTabs} setSubTabs={setSubTabs} subBtn1name={subBtn1name} subBtn2name={subBtn2name} />}
+                {eventGifting ? (
+                  <div className="d-flex fd-column jc-center al-center gap-1">
+                    <SubButtons subTabs={subTabs} setSubTabs={setSubTabs} subBtn1name={subBtn1name} subBtn2name={subBtn2name} />
+                    <GiftingSubButtons
+                      subTabs={giftinglbMiddleButtons}
+                      setSubTabs={setgiftinglbMiddleButtons}
+                      subBtn1name={"Daily"}
+                      subBtn2name={"Overall"}
+                    />
+                    {giftinglbMiddleButtons.Overall ? null : (
+                      <GiftingSubButtons
+                        subTabs={giftinglbBottomButtons}
+                        setSubTabs={setgiftinglbBottomButtons}
+                        subBtn1name={"Today"}
+                        subBtn2name={"Yesterday"}
+                      />
+                    )}
+                  </div>
+                ) : (
+                  <SubButtons subTabs={subTabs} setSubTabs={setSubTabs} subBtn1name={subBtn1name} subBtn2name={subBtn2name} />
+                )}
                 <div className="rank-section">
                   {arrayData?.count === 0 ? (
                     <p className="no-data">No Records Found</p>
@@ -69,11 +96,13 @@ function LeaderBoard({
                                 userLevel={userLevel}
                                 actorLevel={actorLevel}
                                 tab1={tab1}
-                                eventGifting={eventGifting}
-                                giftingSubButtons={giftingSubButtons}
                                 icon={icon}
                                 subTabs={subTabs}
                                 beansPotValue={beansPotValue}
+                                eventGifting={eventGifting}
+                                giftingSubButtons={giftinglbMiddleButtons}
+                                giftingDayButtons={giftinglbBottomButtons}
+                                topWinners={topWinners}
                               />
                             </div>
                           );
@@ -97,11 +126,12 @@ function LeaderBoard({
                                 userLevel={userLevel}
                                 actorLevel={actorLevel}
                                 tab1={tab1}
-                                eventGifting={eventGifting}
-                                giftingSubButtons={giftingSubButtons}
                                 icon={icon}
                                 subTabs={subTabs}
                                 beansPotValue={beansPotValue}
+                                eventGifting={eventGifting}
+                                giftingSubButtons={giftinglbMiddleButtons}
+                                giftingDayButtons={giftinglbBottomButtons}
                               />
                             </div>
                           ))}

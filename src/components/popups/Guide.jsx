@@ -9,18 +9,17 @@ function Guide({ language, close }) {
   let current;
   language === "Urdu/Hindi" ? (current = guideContent.Urdu) : (current = guideContent.English);
   const [collapsible, setcollapsible] = useState({
-    boxFirst: true,
+    boxFirst: false,
     boxSecond: false,
     boxThird: false,
   });
   const collapsibleSwitch = (id) => {
-    let newCat = {
-      boxFirst: false,
-      boxSecond: false,
-      boxThird: false,
-    };
-    setcollapsible(collapsible ? { ...newCat, [id]: true } : { ...newCat, [id]: false });
+    setcollapsible((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id], // Toggle the specific box's state
+    }));
   };
+
   return (
     <div className="p-rel w-100 d-flex al-start jc-center" style={{ height: "100%" }}>
       <div className="guide-popup">

@@ -47,16 +47,16 @@ function Records({ close, gameRecords, loadMoreHistory, isLoading }) {
                                   <img src={rewardImages(obj.desc)} alt="" />
                                 </div>
                                 <div className="desc">
-                                  {obj.desc == "Beans" ? (
+                                  {obj.desc == "Beans" || obj.desc == "gems" ? (
                                     <>
-                                      {obj.desc} {obj.count}
+                                      {obj.desc} x{obj.count}
                                     </>
                                   ) : (
                                     <>
-                                      {obj.desc} x {obj.count}
+                                      {obj.desc} x{obj.count}
                                     </>
                                   )}
-                                  {obj.desc == "Beans" ? null : <>{obj.count == 1 ? " day" : " days"}</>}
+                                  {obj.desc == "Beans" || obj.desc == "gems" ? null : <>{obj.count == 1 ? " day" : " days"}</>}
                                 </div>
                               </div>
                             );

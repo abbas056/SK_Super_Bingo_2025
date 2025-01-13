@@ -24,6 +24,20 @@ const App = () => {
     tab1: true,
     tab2: false,
   });
+  const [wheelBtns, setwheelBtns] = useState({
+    Lucky: true,
+    VipLucky: false,
+  });
+  let recordType;
+  if (mainTabs?.tab1) {
+    recordType = 1;
+  } else if (mainTabs?.tab2) {
+    if (wheelBtns.Lucky) {
+      recordType = 2;
+    } else if (wheelBtns.VipLucky) {
+      recordType = 3;
+    }
+  }
   const [popup, setPopup] = useState({
     guide: false,
     eventGifting: false,
@@ -67,9 +81,7 @@ const App = () => {
     setIsLoading(true);
     axios
       .get(
-        `${baserUrl}api/activity/eidF/getRecordInfo?eventDesc=20250124_bingo&rankIndex=21&pageNum=${loadMore}&pageSize=20&type=${
-          mainTabs.tab1 ? 1 : 2
-        }&userId=${userId}`
+        `${baserUrl}api/activity/eidF/getRecordInfo?eventDesc=20250124_bingo&rankIndex=21&pageNum=${loadMore}&pageSize=20&type=${recordType}&userId=${userId}`
       )
       .then((response) => {
         if (loadMore >= 2) {
@@ -80,14 +92,14 @@ const App = () => {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [mainTabs, userInfo, loadMore, userId]);
+  }, [mainTabs, wheelBtns, userInfo, loadMore, userId]);
 
   return (
     <div className="App">
       <LanguageBar setLanguage={setLanguage} language={language} />
-      <img className="w-100 mb-3vw" src={header} alt="" />
-      <Marque />
-      <MainButtons mainTabs={mainTabs} setMainTabs={setMainTabs} />
+      <img className="w-100 mb-1vw" src={header} alt="" />
+      <Marque mainTabs={mainTabs} />
+      <MainButtons mainTabs={mainTabs} setMainTabs={setMainTabs} wheelBtns={wheelBtns} setwheelBtns={setwheelBtns} />
       <PopupButtons
         mainTabs={mainTabs}
         popupSwitch={popupSwitch}

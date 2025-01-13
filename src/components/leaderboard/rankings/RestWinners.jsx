@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { captureImageError, estBeans, formatData, goTo } from "../../../js/helpers";
+import { captureImageError, estBeans, estBeansGifitng, formatData, goTo } from "../../../js/helpers";
 import { baserUrl } from "../../../js/baserUrl";
 import { ApiContext } from "../../../services/Api";
 import { onwardFrame, unknown } from "../../../utils/images";
@@ -22,6 +22,7 @@ function RestWinners({
   icon,
   subTabs,
   beansPotValue,
+  giftingDayButtons,
 }) {
   const { isLive } = useContext(ApiContext);
 
@@ -53,7 +54,7 @@ function RestWinners({
       <div className="users-details-onward f-tangoItalic" key={index}>
         <div className="d-flex al-center p-rel jc-center">
           <div className="rank-id d-flex al-center jc-center">{listNumber}.</div>
-          <div className="d-flex al-center gap-1">
+          <div className="d-flex al-center">
             <div
               onClick={() => {
                 goTo(isLive, userId, userId);
@@ -69,29 +70,29 @@ function RestWinners({
           </div>
         </div>
         {tab2 ? (
-          <div className="rewards-slide d-flex al-center jc-center gap-1">
+          <div className="rewards-slide d-flex al-center jc-end gap-1">
             <LeaderBoardSlider description={formatData(arrayDesc)} />
           </div>
-        ) : eventGifting && giftingSubButtons?.Daily ? (
+        ) : eventGifting && subTabs.Talents && giftingSubButtons.Daily ? (
           <>
             {listNumber <= 5 && (
               <div className="est-points d-flex fd-column al-center jc-center">
-                <span>Est Beans:</span>
+                <span>{giftingDayButtons.Today ? "Est Gems:" : "Gems Won:"}</span>
                 <div className="d-flex al-center jc-center">
                   <img style={{ width: "4vw", height: "4vw" }} src={icon} alt="" />
-                  {estBeans(eventGifting, beansPotValue, listNumber)}
+                  {estBeansGifitng(eventGifting, subTabs, beansPotValue, listNumber)}
                 </div>
               </div>
             )}
-            <div className="est-rew d-flex al-center jc-start">
+            <div className="est-rew d-flex al-center jc-start gap-1">
               <img style={{ width: "4vw", height: "4vw" }} src={icon} alt="" />
-              <span>{userScore}</span>
+              <span style={{ fontSize: "2.7vw" }}>{userScore}</span>
             </div>
           </>
         ) : (
-          <div className="est-rew d-flex al-center jc-start">
+          <div className="est-rew d-flex al-center jc-start gap-1">
             <img style={{ width: "4vw", height: "4vw" }} src={icon} alt="" />
-            <span>{userScore}</span>
+            <span style={tab1 ? { fontSize: "3.5vw" } : { fontSize: "2.7vw" }}>{userScore}</span>
           </div>
         )}
       </div>

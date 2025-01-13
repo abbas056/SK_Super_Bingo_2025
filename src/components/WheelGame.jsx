@@ -4,13 +4,18 @@ import WheelBtns from "./WheelBtns";
 import LuckyWheel from "./Games/LuckyWheel";
 import VipLuckyWheel from "./Games/VipLuckyWheel";
 import { ApiContext } from "../services/Api";
+import luckywheelbg from "../assets/wheelGameBg.png";
+import vipwheelbg from "../assets/vipGame-bg.png";
 
 function WheelGame({ wheelBtns, setwheelBtns }) {
   const { userInfo } = useContext(ApiContext);
   const talentPoints = userInfo?.talentPoints;
   return (
     <>
-      <div className="wheel-game m-auto d-flex fd-column al-center jc-center p-rel f-tangoSansItalic gap-2">
+      <div
+        className="wheel-game m-auto d-flex fd-column al-center jc-center p-rel f-tangoSansItalic gap-2"
+        style={wheelBtns.Lucky ? { backgroundImage: `url(${luckywheelbg})` } : { backgroundImage: `url(${vipwheelbg})` }}
+      >
         <div className="wheel-game-points d-flex al-center jc-center gap-1 m-auto p-abs">
           <img className="w-6vw" src={talentPtsIcon} alt="" /> <span>My Talent points:</span>: <span>{talentPoints ? talentPoints : 0}</span>
         </div>

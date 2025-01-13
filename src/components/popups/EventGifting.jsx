@@ -36,49 +36,85 @@ function EventGifting({ close, eventGifting }) {
     Yesterday: false,
   });
 
+  const [giftinglbTopButtons, setgiftinglbTopButtons] = useState({
+    Talents: true,
+    Gifters: false,
+  });
+  const [giftinglbMiddleButtons, setgiftinglbMiddleButtons] = useState({
+    Daily: true,
+    Overall: false,
+  });
+  const [giftinglbBottomButtons, setgiftinglbBottomButtons] = useState({
+    Today: true,
+    Yesterday: false,
+  });
+
   let winners;
   let rewards;
   let overallRewards;
   let potImage;
-  let beanPotValue;
+  let rewardsBeanPotValue;
+  let lbBeanPotValue;
   let icon;
+  let potIcon;
   let gifterDailyTodayPot = `DAILY_USER_${CurrentDate}`;
   let gifterDailyYesterdayPot = `DAILY_USER_${PreviousDate}`;
   let talentDailyTodayPot = `DAILY_GEMS_${CurrentDate}`;
   let talentDailyYesterdayPot = `DAILY_GEMS_${PreviousDate}`;
-  let overallPot = `OVERALL_BEANS`;
 
   if (subTabs.Talents) {
     potImage = gemspot;
-    icon = gemIcon;
+    potIcon = gemIcon;
     if (giftingSubButtons.Daily) {
       rewards = talentDailyRewards;
       if (giftingDayButtons.Today) {
-        winners = talentDailyToday;
-        beanPotValue = userInfo?.beansPotInfo?.[talentDailyTodayPot];
+        rewardsBeanPotValue = userInfo?.beansPotInfo?.[talentDailyTodayPot];
       } else if (giftingDayButtons.Yesterday) {
-        winners = talentDailyYesterday;
-        beanPotValue = userInfo?.beansPotInfo?.[talentDailyYesterdayPot];
+        rewardsBeanPotValue = userInfo?.beansPotInfo?.[talentDailyYesterdayPot];
       }
     } else if (giftingSubButtons.Overall) {
-      winners = talentOverall;
       overallRewards = talentOverallRewards;
     }
   } else if (subTabs.Gifters) {
     potImage = beanPot;
-    icon = beanIcon;
+    potIcon = beanIcon;
     if (giftingSubButtons.Daily) {
       rewards = gifterDailyRewards;
       if (giftingDayButtons.Today) {
-        winners = gifterDailyToday;
-        beanPotValue = userInfo?.beansPotInfo?.[gifterDailyTodayPot];
+        rewardsBeanPotValue = userInfo?.beansPotInfo?.[gifterDailyTodayPot];
       } else if (giftingDayButtons.Yesterday) {
-        winners = gifterDailyYesterday;
-        beanPotValue = userInfo?.beansPotInfo?.[gifterDailyYesterdayPot];
+        rewardsBeanPotValue = userInfo?.beansPotInfo?.[gifterDailyYesterdayPot];
       }
     } else if (giftingSubButtons.Overall) {
-      winners = gifterOverall;
       overallRewards = gifterOverallRewards;
+    }
+  }
+
+  if (giftinglbTopButtons.Talents) {
+    icon = gemIcon;
+    if (giftinglbMiddleButtons.Daily) {
+      if (giftinglbBottomButtons.Today) {
+        winners = talentDailyToday;
+        lbBeanPotValue = userInfo?.beansPotInfo?.[talentDailyTodayPot];
+      } else if (giftinglbBottomButtons.Yesterday) {
+        winners = talentDailyYesterday;
+        lbBeanPotValue = userInfo?.beansPotInfo?.[talentDailyYesterdayPot];
+      }
+    } else if (giftinglbMiddleButtons.Overall) {
+      winners = talentOverall;
+    }
+  } else if (giftinglbTopButtons.Gifters) {
+    icon = beanIcon;
+    if (giftinglbMiddleButtons.Daily) {
+      if (giftinglbBottomButtons.Today) {
+        winners = gifterDailyToday;
+        lbBeanPotValue = userInfo?.beansPotInfo?.[gifterDailyTodayPot];
+      } else if (giftinglbBottomButtons.Yesterday) {
+        winners = gifterDailyYesterday;
+        lbBeanPotValue = userInfo?.beansPotInfo?.[gifterDailyYesterdayPot];
+      }
+    } else if (giftinglbMiddleButtons.Overall) {
+      winners = gifterOverall;
     }
   }
   const topWinners = slicePlease(winners?.list, 0, 3);
@@ -99,7 +135,14 @@ function EventGifting({ close, eventGifting }) {
           {giftingSubButtons.Overall ? (
             <SliderItems overallRewards={overallRewards} />
           ) : (
-            <BingoRewards eventGifting={eventGifting} rewards={rewards} potImage={potImage} icon={icon} beanPotValue={beanPotValue} />
+            <BingoRewards
+              subTabs={subTabs}
+              eventGifting={eventGifting}
+              rewards={rewards}
+              potImage={potImage}
+              icon={potIcon}
+              beanPotValue={rewardsBeanPotValue}
+            />
           )}
           <LeaderBoard
             title={leaderboardTitle}
@@ -109,9 +152,15 @@ function EventGifting({ close, eventGifting }) {
             arrayData={winners}
             eventGifting={eventGifting}
             icon={icon}
-            subTabs={subTabs}
-            beansPotValue={beanPotValue}
-            giftingSubButtons={giftingSubButtons}
+            beansPotValue={lbBeanPotValue}
+            subBtn1name={"Talents"}
+            subBtn2name={"Gifters"}
+            subTabs={giftinglbTopButtons}
+            setSubTabs={setgiftinglbTopButtons}
+            giftinglbMiddleButtons={giftinglbMiddleButtons}
+            setgiftinglbMiddleButtons={setgiftinglbMiddleButtons}
+            giftinglbBottomButtons={giftinglbBottomButtons}
+            setgiftinglbBottomButtons={setgiftinglbBottomButtons}
           />
         </div>
         <div className="close p-abs" onClick={close}>

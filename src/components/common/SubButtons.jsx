@@ -11,10 +11,16 @@ function SubButtons({ subBtn1name, subBtn2name, subTabs, setSubTabs }) {
   return (
     <div className="sub-buttons d-flex jc-center al-center m-auto p-rel">
       <button onClick={() => tabSwitch(`${subBtn1name}`)} className={subTabs[subBtn1name] ? "btn-active" : "btn"}>
-        {subBtn1name}
+        {subBtn1name === "Today" ? "TODAY" : "TALENTS"}
       </button>
       <button onClick={() => tabSwitch(`${subBtn2name}`)} className={subTabs[subBtn2name] ? "btn-active" : "btn"}>
-        {subBtn2name === "Previous" ? subBtn2name + " " + "Day" : subBtn2name}
+        {subBtn2name === "Previous" ? (
+          <span>
+            PREVIOUS <br /> DAY
+          </span>
+        ) : (
+          "GIFTERS"
+        )}
       </button>
     </div>
   );

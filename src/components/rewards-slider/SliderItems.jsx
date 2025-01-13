@@ -1,7 +1,7 @@
 import React from "react";
 import RewardSlider, { CarouselItem } from "./RewardSlider";
 import { tab1Rewards } from "../../js/data";
-function SliderItems({ rewards, overallRewards, eventGifting }) {
+function SliderItems({ rewards, overallRewards, eventGifting, tab1, subTabs }) {
   return (
     <>
       {rewards?.length > 0 && (
@@ -13,30 +13,59 @@ function SliderItems({ rewards, overallRewards, eventGifting }) {
                   let index = i + 1;
                   return (
                     <CarouselItem key={i}>
-                      <div className="inner-box d-flex fd-column al-center jc-center f-tangoItalic p-rel" key={i}>
-                        <div className="rank d-flex fd-column al-center jc-center">
-                          <span>
-                            Top {index}{" "}
-                            {index === 1 ? (
-                              <sup style={{ marginLeft: "-0.7vw" }}>st</sup>
-                            ) : index === 2 ? (
-                              <sup style={{ marginLeft: "-0.7vw" }}>nd</sup>
-                            ) : index === 3 ? (
-                              <sup style={{ marginLeft: "-0.7vw" }}>rd</sup>
-                            ) : (
-                              <sup style={{ marginLeft: "-0.7vw" }}>th</sup>
-                            )}
-                          </span>
-                        </div>
-                        <div className="rewardImg d-flex al-center jc-center gap-4">
-                          {item?.frame?.map((_items, index) => (
-                            <div className="img-box d-flex fd-column al-center jc-center" key={index}>
-                              <img src={_items.pic} alt="" key={index} />
+                      {tab1 || subTabs?.Gifters ? (
+                        <>
+                          <div className="inner-box d-flex fd-column al-center jc-center p-rel gap-2" key={i}>
+                            <div className="rank d-flex fd-column al-center jc-center p-abs">
+                              <span>
+                                Top {index}{" "}
+                                {index === 1 ? (
+                                  <sup style={{ marginLeft: "-0.7vw" }}>st</sup>
+                                ) : index === 2 ? (
+                                  <sup style={{ marginLeft: "-0.7vw" }}>nd</sup>
+                                ) : index === 3 ? (
+                                  <sup style={{ marginLeft: "-0.7vw" }}>rd</sup>
+                                ) : (
+                                  <sup style={{ marginLeft: "-0.7vw" }}>th</sup>
+                                )}
+                              </span>
                             </div>
-                          ))}
+                            <div className="rewardImg d-flex al-center jc-center gap-4">
+                              {item?.frame?.map((_items, index) => (
+                                <div className="img-box d-flex fd-column al-center jc-center" key={index}>
+                                  <img src={_items.pic} alt="" key={index} />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="desc d-flex fd-column jc-center al-center">{item.desc}</div>
+                        </>
+                      ) : (
+                        <div className="inner-box d-flex fd-column al-center jc-center p-rel gap-2" key={i}>
+                          <div className="rank d-flex fd-column al-center jc-center">
+                            <span>
+                              Top {index}{" "}
+                              {index === 1 ? (
+                                <sup style={{ marginLeft: "-0.7vw" }}>st</sup>
+                              ) : index === 2 ? (
+                                <sup style={{ marginLeft: "-0.7vw" }}>nd</sup>
+                              ) : index === 3 ? (
+                                <sup style={{ marginLeft: "-0.7vw" }}>rd</sup>
+                              ) : (
+                                <sup style={{ marginLeft: "-0.7vw" }}>th</sup>
+                              )}
+                            </span>
+                          </div>
+                          <div className="rewardImg d-flex al-center jc-center gap-4">
+                            {item?.frame?.map((_items, index) => (
+                              <div className="img-box d-flex fd-column al-center jc-center" key={index}>
+                                <img src={_items.pic} alt="" key={index} />
+                              </div>
+                            ))}
+                          </div>
+                          <div className="desc d-flex fd-column jc-center al-center">{item.desc}</div>
                         </div>
-                        <div className="desc d-flex fd-column jc-center al-center">{item.desc}</div>
-                      </div>
+                      )}
                     </CarouselItem>
                   );
                 })}

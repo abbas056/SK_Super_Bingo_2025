@@ -49,7 +49,7 @@ $standardWidth: 750;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 4vw;
+  margin-bottom: 3vw;
   .marquee-alternative {
     margin: auto;
     margin-left: 3vw;
@@ -60,12 +60,12 @@ $standardWidth: 750;
     .taxts {
       background-image: url(./assets/TickerTapeBase.png);
       background-size: 100% 100%;
-      width: 115vw;
       height: 14vw;
       color: #fefffe;
       font-size: 3vw;
       margin-right: 8vw;
-      padding: 0 2vw 0 2vw;
+      padding: 0 10vw 0 2vw;
+      text-shadow: 1px 1px 0 black, -1px 1px 0 black, 1px -1px 0 black, -1px -1px 0 black;
 
       .border-img {
         width: 14vw;
@@ -81,7 +81,7 @@ $standardWidth: 750;
       }
       .text {
         .content {
-          margin-left: 7vw;
+          margin-left: 9vw;
           img {
             width: 7vw;
           }
@@ -119,11 +119,12 @@ $standardWidth: 750;
     margin-top: -0.5vw;
 
     img {
-      width: 20vw;
+      width: 23vw;
       transition: all 0.2s ease;
     }
   }
   .not-active {
+    margin-top: 2vw;
     width: 40%;
     img {
       width: 18vw;
@@ -135,7 +136,7 @@ $standardWidth: 750;
 .my-points {
   background-image: url(./assets/MyGamePointsBase.png);
   background-size: 100% 100%;
-  width: 65%;
+  width: 68%;
   height: 15vw;
   font-size: 3vw;
   text-shadow: 1px 1px 0 black, -1px 1px 0 black, 1px -1px 0 black, -1px -1px 0 black;
@@ -158,10 +159,48 @@ $standardWidth: 750;
     background-size: 100% 100%;
     width: 95%;
     height: 110vw;
+    .gridContainer {
+      width: 68%;
+      height: 60vw;
+      position: absolute;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      top: 32.7vw;
+      left: 14.9vw;
+      position: relative;
+      --cell-size: 11vw;
+      .bingo-image {
+        width: 95%;
+        height: 100%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        top: 0vw;
+        z-index: 11;
+      }
+      .gridCell {
+        background-image: url(./assets/gridBox.png);
+        background-size: 100% 100%;
+        width: var(--cell-size);
+        height: var(--cell-size);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 4vw;
+        color: #50264c;
+
+        &:hover {
+          background-color: #e6e6e6;
+          cursor: pointer;
+        }
+      }
+    }
   }
   &-bottom {
     width: 70%;
-    height: 15vw;
+    height: 22vw;
     .chances {
       display: flex;
       flex-direction: column;
@@ -174,8 +213,8 @@ $standardWidth: 750;
         background: transparent;
         background-image: url(./assets/SpeedBase.png);
         background-size: 100% 100%;
-        width: 60%;
-        height: 9vw;
+        width: 50%;
+        height: 8vw;
         border: none;
         color: white;
         text-align: center;
@@ -204,7 +243,7 @@ $standardWidth: 750;
       cursor: pointer;
       font-size: 2.5vw;
       img {
-        width: 20vw;
+        width: 25vw;
       }
     }
   }
@@ -233,9 +272,11 @@ $standardWidth: 750;
     .pot {
       background-image: url(./assets/Reward-Base.png);
       background-size: 100% 100%;
-      width: 38%;
-      height: 38vw;
+      width: 32%;
+      height: 34vw;
+      padding-top: 3vw;
       span {
+        text-shadow: 0px 0px 5px black, 0px 0px 5px black, 0px 0px 1px black, 0px 0px 0px black;
         top: 4vw;
         font-size: 3.2vw;
       }
@@ -246,8 +287,8 @@ $standardWidth: 750;
     .bean-num {
       background-image: url(./assets/Layer.png);
       background-size: 100% 100%;
-      width: 32vw;
-      height: 12vw;
+      width: 30vw;
+      height: 10vw;
       img {
         width: 6vw;
       }
@@ -275,7 +316,7 @@ $standardWidth: 750;
             transition: transform 0s;
           }
           .slide-buttons {
-            top: 15vw;
+            top: 17vw;
             justify-content: space-between;
             width: 75%;
             left: 0;
@@ -299,6 +340,8 @@ $standardWidth: 750;
             width: 90%;
             height: 40qw vw;
             .rank {
+              text-shadow: 0px 0px 5px black, 0px 0px 5px black, 0px 0px 1px black, 0px 0px 0px black;
+
               top: 2vw;
               font-size: 4vw;
               color: white;
@@ -319,13 +362,14 @@ $standardWidth: 750;
           }
           .desc {
             width: 80%;
-            height: 11vw;
+            height: 13vw;
             font-size: 3vw;
             margin: 0 auto;
             color: white;
             white-space: normal;
             span {
               width: 75%;
+              height: 100%;
             }
           }
         }
@@ -353,16 +397,161 @@ $standardWidth: 750;
     }
   }
 }
+.rewards-box2 {
+  background-size: 100% 100%;
+  height: 75vw;
+  padding-top: 5vw;
+  .title {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 80%;
+    top: -1vw;
+  }
+  .beans-pot {
+    width: 40%;
+    font-size: 3vw;
+    .pot {
+      background-image: url(./assets/Reward-Base.png);
+      background-size: 100% 100%;
+      width: 90%;
+      height: 30vw;
+      padding-top: 5vw;
+      span {
+        text-shadow: 0px 0px 5px black, 0px 0px 5px black, 0px 0px 1px black, 0px 0px 0px black;
+        top: 4vw;
+        font-size: 3.2vw;
+      }
+      img {
+        width: 25vw;
+      }
+    }
+    .bean-num {
+      background-image: url(./assets/Layer.png);
+      background-size: 100% 100%;
+      width: 32vw;
+      height: 10vw;
+      img {
+        width: 4vw;
+      }
+    }
+  }
+  .rewards {
+    width: 40%;
+    .rewards-slider {
+      width: 100%;
+      height: 100%;
+      .sliderItem {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .carousel {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          .inner {
+            width: 100%;
+            height: 100%;
+            white-space: nowrap;
+            transition: transform 0s;
+          }
+          .slide-buttons {
+            top: 17vw;
+            justify-content: space-between;
+            width: 70%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            img {
+              width: 3.5vw;
+            }
+          }
+        }
+        .carousel-item {
+          gap: 1vw;
+          display: inline-flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          position: relative;
+          .inner-box {
+            background-image: url(./assets/Reward-Base.png);
+            background-size: 100% 100%;
+            width: 90%;
+            height: 35vw;
+            .rank {
+              text-shadow: 0px 0px 5px black, 0px 0px 5px black, 0px 0px 1px black, 0px 0px 0px black;
+              top: 4vw;
+              font-size: 3.2vw;
+              color: white;
+            }
+            .rewardImg {
+              width: 100%;
+              height: 100%;
+              .img-box {
+                width: 25vw;
+                height: 25vw;
+                img {
+                  width: 70%;
+                }
+              }
+            }
+          }
+          .desc {
+            background-image: url(./assets/Layer.png);
+            background-size: 100% 100%;
+            width: 32vw;
+            height: 10vw;
+            font-size: 2.9vw;
+            margin: 0 auto;
+            color: white;
+            white-space: normal;
+            line-height: 3vw;
+            span {
+              width: 75%;
+            }
+          }
+        }
+        .indicators {
+          display: flex;
+          justify-content: center;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 27vw;
+          span {
+            border-radius: 50%;
+            height: 1.2vw;
+            width: 1.2vw;
+            background-color: white;
+            margin: 3vw 0.7vw;
+          }
+          span.active {
+            background-color: gold;
+            border-radius: 50%;
+            height: 1.2vw;
+            width: 1.2vw;
+          }
+        }
+      }
+    }
+  }
+}
 .leaderboard {
   background-image: url("./assets/leaderboardBg.png");
   background-size: 100% 100%;
   padding: 10vw 0 20vw 0;
   &-title {
-    width: 85%;
+    width: 80%;
     height: 22vw;
     left: 0;
     right: 0;
-    top: -8vw;
+    top: -6vw;
     img {
       width: 100%;
     }
@@ -373,7 +562,7 @@ $standardWidth: 750;
       width: 100%;
       //Top Winners
       .top-position-holders {
-        width: 85%;
+        width: 90%;
         margin-top: 20vw;
         .user-container {
           width: 37vw;
@@ -421,6 +610,7 @@ $standardWidth: 750;
               position: absolute;
               color: white;
               padding: 4vw 0 2vw 0;
+              gap: 1vw;
             }
             .bottom-data2 {
               background-image: url(./assets/2ndUserDetailBase.png);
@@ -434,6 +624,7 @@ $standardWidth: 750;
               position: absolute;
               color: white;
               padding: 4vw 0 2vw 0;
+              gap: 1vw;
             }
             .bottom-data3 {
               background-image: url(./assets/3rdUserDetailBase.png);
@@ -447,11 +638,15 @@ $standardWidth: 750;
               position: absolute;
               color: white;
               padding: 4vw 0 2vw 0;
+              gap: 1vw;
             }
             .username {
               font-size: 2.8vw;
               text-align: center;
               white-space: nowrap;
+              width: 16vw;
+              text-overflow: ellipsis;
+              overflow: hidden;
             }
             .level-img {
               width: 12vw;
@@ -461,9 +656,8 @@ $standardWidth: 750;
                 border-radius: 50%;
                 position: absolute;
                 width: 13vw;
-                top: -13vw;
+                top: -12.5vw;
                 z-index: 1;
-                left: 11vw;
               }
               .rank-border-image {
                 width: 20vw;
@@ -476,7 +670,7 @@ $standardWidth: 750;
                 border-radius: 50%;
                 position: absolute;
                 width: 13vw;
-                top: -13vw;
+                top: -12.5vw;
                 z-index: 1;
                 left: 11vw;
               }
@@ -531,17 +725,18 @@ $standardWidth: 750;
             font-size: 3vw;
             color: white;
             margin: 0 auto;
+            margin-top: 2vw;
           }
           .rank-user-image {
             border-radius: 50%;
             position: absolute;
-            width: 14vw;
-            top: 1vw;
-            left: 7vw;
+            width: 11vw;
+            top: 2.5vw;
+            left: 7.5vw;
             z-index: 1;
           }
           .rank-border-image {
-            width: 18vw;
+            width: 16vw;
             top: 1vw;
             z-index: 1;
           }
@@ -563,10 +758,11 @@ $standardWidth: 750;
             }
           }
           .est-rew {
-            width: 20vw;
+            width: 22vw;
             height: 8vw;
-            font-size: 2.5vw;
+            font-size: 2.8vw;
             text-align: left;
+            margin-top: 2vw;
             img {
               width: 3vw;
               height: 3vw;
@@ -575,15 +771,17 @@ $standardWidth: 750;
           .est-points {
             font-size: 2.2vw;
             color: white;
-            width: 15vw;
+            // width: 15vw;
+            margin-top: 2vw;
             align-items: start;
           }
           .rewards-slide {
-            width: 30vw;
+            width: 34vw;
             font-size: 2.8vw;
             font-weight: bold;
             text-align: left;
             margin-top: 2vw;
+            margin-right: 3vw;
             img {
               width: 3vw;
               height: 3vw;
@@ -694,7 +892,6 @@ $standardWidth: 750;
   }
 }
 .wheel-game {
-  background-image: url(./assets/wheelGameBg.png);
   background-size: 100% 100%;
   width: 95%;
   height: 160vw;
@@ -786,7 +983,7 @@ $standardWidth: 750;
         background-image: url(./assets/vipwheelbase.png);
         background-size: 100% 100%;
         width: 80%;
-        height: 68vw;
+        height: 66vw;
         .wheel {
           width: 100%;
           .image-container {
@@ -795,6 +992,12 @@ $standardWidth: 750;
             overflow: hidden;
             position: relative;
             //wheel-2 degree
+            .center {
+              width: 16vw;
+              top: 18vw;
+              z-index: 5;
+              left: 26vw;
+            }
             .w2rotate0 {
               transform: rotate(5020deg);
               transition: transform 3s ease-out;
@@ -873,89 +1076,16 @@ $standardWidth: 750;
     height: 18vw;
   }
 }
-// ------------------------------
-.gridContainer {
-  width: 68%;
-  height: 60vw;
-  position: absolute;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  top: 33vw;
-  left: 15vw;
-  .bingo-image {
-    width: 100%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    top: 0vw;
-  }
-}
-.gridCell {
-  background-image: url(./assets/gridBox.png);
-  background-size: 100% 100%;
-  width: 11vw;
-  height: 11vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 5vw;
-  color: black;
-
-  &:hover {
-    background-color: #e6e6e6;
-    cursor: pointer;
-  }
-}
-.bingoMessage {
-  background-color: #28a745;
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  animation: fadeInOut 2s;
-
-  /* Fade-in and fade-out animation */
-  @keyframes fadeInOut {
-    0% {
-      opacity: 0;
-    }
-    25% {
-      opacity: 1;
-    }
-    75% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-}
-.closeButton {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  padding: 8px 15px;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-
-  &:hover {
-    background-color: #a71d2a;
-  }
-}
 .game-popup {
   width: 100%;
   .success {
     background-image: url(./assets/popups/largebg.png);
     background-size: 100% 100%;
     width: 90%;
-    height: 105vw;
+    height: 100vw;
     color: white;
     margin: 0 auto;
+    padding: 3vw 0;
     .head {
       width: 80%;
       margin: 0 auto;
@@ -971,7 +1101,7 @@ $standardWidth: 750;
       width: 90%;
       .rews-box {
         width: 100%;
-        max-height: 53vw;
+        max-height: 60vw;
         flex-wrap: wrap;
         gap: 2vw;
       }
@@ -1028,17 +1158,6 @@ $standardWidth: 750;
     }
   }
 }
-
-.popup {
-  background: #fff;
-  padding: 20px;
-  color: black;
-  border-radius: 10px;
-  text-align: center;
-  width: 300px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-// -----------------------------
 .see-buttons {
   position: absolute;
   left: 0;
@@ -1062,16 +1181,16 @@ $standardWidth: 750;
   button {
     color: #51274c;
     font-family: tangoSansItalic;
-    font-size: 2.8vw;
+    font-size: 3.2vw;
     width: 17vw;
-    height: 10vw;
+    height: 9vw;
     font-weight: bold;
   }
   .guideBtn {
     background-image: url(./assets/SlideButtonBaseLeft.png);
     background-size: 100% 100%;
     left: 0;
-    top: 80vw;
+    top: 85vw;
     z-index: 3;
     padding-right: 3vw;
   }
@@ -1079,7 +1198,7 @@ $standardWidth: 750;
     background-image: url(./assets/SlideButtonBaseRight.png);
     background-size: 100% 100%;
     right: 0;
-    top: 80vw;
+    top: 85vw;
     z-index: 3;
     padding-left: 2vw;
   }
@@ -1146,7 +1265,7 @@ $standardWidth: 750;
   }
 }
 .guide-popup {
-  background-image: url(./assets/popups/Guide/bg.png);
+  background-image: url(./assets/popups/bg.png);
   background-size: 100% 100%;
   width: 95%;
   height: 135vw;
@@ -1201,12 +1320,14 @@ $standardWidth: 750;
         margin-top: -5vw;
         padding: 2vw;
         .box {
-          width: 100%;
+          width: 95%;
           margin: 0 auto;
           height: 45vw;
           line-height: 4vw;
           margin-top: 4vw;
           overflow-y: scroll;
+          padding-right: 3vw;
+
           ol {
             padding: 0 0 0 4vw;
           }
@@ -1273,7 +1394,7 @@ $standardWidth: 750;
   }
 }
 .details-popup {
-  background-image: url(./assets/popups/Details/bg.png);
+  background-image: url(./assets/popups/largebg.png);
   background-size: 100% 100%;
   width: 95%;
   padding: 15vw 0 10vw 0;
@@ -1347,30 +1468,34 @@ $standardWidth: 750;
   margin: 0 auto;
   color: white;
   z-index: 2;
+  .box {
+    background: #ffc436;
+    padding: 1vw 1vw 1vw 0vw;
+    border-radius: 0 5vw 5vw 0;
+    margin-left: 1vw;
+  }
   .selected-language {
     background-color: #8102cb;
     cursor: pointer;
-    font-size: 3.5vw;
+    font-size: 3vw;
     color: white;
     border-radius: 5vw;
-    height: 7vw;
+    height: 5vw;
     margin-top: 2vw;
     display: flex;
     padding-left: 2vw;
     justify-content: space-between;
     align-items: center;
     img {
-      width: 4vw;
+      width: 3vw;
       height: 3vw;
       margin-left: 1vw;
-      background-color: #ffc437;
-      padding: 2vw;
-      border-radius: 0 5vw 5vw 0;
     }
   }
   .language-list {
     border-radius: 4px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 2.5vw;
   }
 
   .language-option {
@@ -1504,7 +1629,7 @@ $standardWidth: 750;
   width: 8vw;
   position: fixed;
   bottom: 5vw;
-  right: 19vw;
+  right: 8vw;
   cursor: pointer;
   z-index: 3;
   img {
@@ -1512,7 +1637,7 @@ $standardWidth: 750;
   }
 }
 .rewards-history {
-  background-image: url(./assets/popups/Records/bg.png);
+  background-image: url(./assets/popups/largebg.png);
   background-size: 100% 100%;
   width: 100%;
   height: 110vw;
@@ -1627,4 +1752,95 @@ $standardWidth: 750;
       height: 100%;
     }
   }
+}
+.no-scroll {
+  overflow: hidden;
+}
+
+// Rows
+.row-0 {
+  --row-index: 0;
+  top: calc(var(--cell-size) * var(--row-index) + var(--cell-size) / 1.7) !important;
+}
+.row-1 {
+  --row-index: 1;
+  top: calc(var(--cell-size) * var(--row-index) + var(--cell-size) / 1.5) !important;
+}
+.row-2 {
+  --row-index: 2;
+  top: calc(var(--cell-size) * var(--row-index) + var(--cell-size) / 1.4) !important;
+}
+.row-3 {
+  --row-index: 3;
+  top: calc(var(--cell-size) * var(--row-index) + var(--cell-size) / 1.3) !important;
+}
+.row-4 {
+  --row-index: 4;
+  top: calc(var(--cell-size) * var(--row-index) + var(--cell-size) / 1.1) !important;
+}
+// Columns
+.column-0 {
+  --column-index: 0;
+  left: calc(var(--cell-size) * var(--column-index) + var(--cell-size) / 2) !important;
+}
+.column-1 {
+  --column-index: 1;
+  left: calc(var(--cell-size) * var(--column-index) + var(--cell-size) / 1.6) !important;
+}
+.column-2 {
+  --column-index: 2;
+  left: calc(var(--cell-size) * var(--column-index) + var(--cell-size) / 1.4) !important;
+}
+.column-3 {
+  --column-index: 3;
+  left: calc(var(--cell-size) * var(--column-index) + var(--cell-size) / 1.2) !important;
+}
+.column-4 {
+  --column-index: 4;
+  left: calc(var(--cell-size) * var(--column-index) + var(--cell-size) / 1) !important;
+}
+
+.cutline {
+  position: absolute;
+  display: block;
+  z-index: 10;
+}
+
+.row-cutline {
+  width: 100%;
+  height: 4vw;
+  top: calc(var(--cell-size) * var(--row-index) + var(--cell-size) / 1.5);
+  left: -1vw;
+  transform: translateY(-50%);
+}
+.column-cutline {
+  width: 4vw;
+  height: 100%;
+  top: 0;
+  left: calc(var(--cell-size) * var(--column-index) + var(--cell-size) / 2);
+  transform: translateX(-50%);
+}
+
+.diagonal-cutline {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  transform-origin: top left;
+  z-index: 10;
+}
+.left-diagonal {
+  top: -1vw;
+  left: 1vw;
+  width: 85vw;
+  height: 5vw;
+  transform: rotate(43deg);
+  transform-origin: top left;
+}
+.right-diagonal {
+  top: -8px;
+  left: -26vw;
+  width: 85vw;
+  height: 5vw;
+  transform: rotate(-45deg);
+  transform-origin: top right;
 }

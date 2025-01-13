@@ -3,7 +3,7 @@ import { rewardImages } from "../../utils/images";
 
 const SliderItem = ({ item }) => {
   return (
-    <div className="slider-item d-flex fd-column al-center jc-center gap-1" style={{ width: "9vw" }}>
+    <div className="slider-item d-flex fd-column al-center jc-center gap-1" style={{ width: "10vw" }}>
       <img style={{ width: "5vw", height: "5vw" }} src={rewardImages(item.desc)} />
       {
         <span className="desc" style={{ fontSize: "1.8vw", color: "white", textAlign: "center" }}>

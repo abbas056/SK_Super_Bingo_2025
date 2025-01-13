@@ -27,24 +27,24 @@ export const talentDailyRewards = [
     id: 1,
     rank: "1st",
     desc: <span>40% of the Gems Pot + MasterMind frame (New) x3 days</span>,
-    frame: [{ pic: `${baserUrl}streamkar/rewards/gems.png` }, { pic: `${baserUrl}streamkar/rewards/noRew.png` }],
+    frame: [{ pic: `${baserUrl}streamkar/rewards/gems.png` }, { pic: `${baserUrl}streamkar/rewards/mastermind.png` }],
   },
   {
     id: 2,
     rank: "2nd",
     desc: <span>30% of the Gems Pot + MasterMind frame (New) x2 days</span>,
-    frame: [{ pic: `${baserUrl}streamkar/rewards/gems.png` }, { pic: `${baserUrl}streamkar/rewards/noRew.png` }],
+    frame: [{ pic: `${baserUrl}streamkar/rewards/gems.png` }, { pic: `${baserUrl}streamkar/rewards/mastermind.png` }],
   },
   {
     id: 3,
     rank: "3rd",
     desc: <span>10% of the Gems Pot + MasterMind frame (New) x1 day</span>,
-    frame: [{ pic: `${baserUrl}streamkar/rewards/gems.png` }, { pic: `${baserUrl}streamkar/rewards/noRew.png` }],
+    frame: [{ pic: `${baserUrl}streamkar/rewards/gems.png` }, { pic: `${baserUrl}streamkar/rewards/mastermind.png` }],
   },
   {
     id: 4,
     rank: "4th",
-    desc: <span>10% of the Gems Pot + Safari Champion frame x3 day</span>,
+    desc: <span>10% of the Gems Pot + Safari Champion frame x3 days</span>,
     frame: [{ pic: `${baserUrl}streamkar/rewards/gems.png` }, { pic: `${baserUrl}streamkar/rewards/safariDesertframe.png` }],
   },
   {
@@ -109,7 +109,7 @@ export const gifterDailyRewards = [
 export const eventGifts = [
   {
     id: 1,
-    img: `${baserUrl}streamkar/gifts/40011725.png`,
+    img: `${baserUrl}streamkar/gifts/mastermind.png`,
     name: "MasterMind",
     cost: "30k",
   },
@@ -140,11 +140,11 @@ export const tab1Details = {
       pointsReq: "30K",
       rewards: [
         {
-          pic: `${baserUrl}streamkar/rewards/noRew.png`,
+          pic: `${baserUrl}streamkar/rewards/MasterMindRoomSkin.png`,
           text: "MasterMind room skin (NEW) x2 days",
         },
         {
-          pic: `${baserUrl}streamkar/rewards/noRew.png`,
+          pic: `${baserUrl}streamkar/rewards/mastermind.png`,
           text: "MasterMind frame (NEW) x2 days",
         },
         {
@@ -211,11 +211,11 @@ export const tab2Details = {
           text: "Game Master Battle frame x1 day",
         },
         {
-          pic: `${baserUrl}streamkar/rewards/noRew.png`,
+          pic: `${baserUrl}streamkar/rewards/MasterMindRoomSkin.png`,
           text: "MasterMind room skin (NEW) x1 Day",
         },
         {
-          pic: `${baserUrl}streamkar/rewards/noRew.png`,
+          pic: `${baserUrl}streamkar/rewards/mastermind.png`,
           text: "MasterMind frame (NEW) x1 Day",
         },
       ],
@@ -230,8 +230,8 @@ export const tab2Details = {
           text: "Bumblebee entrance x2 Days",
         },
         {
-          pic: `${baserUrl}streamkar/rewards/enlighteningRoom.png`,
-          text: "Enlightening Room Skin x2 Days",
+          pic: `${baserUrl}streamkar/rewards/monarchRoom.png`,
+          text: "Monarch Room Skin x2 Days ",
         },
         {
           pic: `${baserUrl}streamkar/rewards/gems.png`,
@@ -250,11 +250,11 @@ export const tab2Details = {
           text: "Game Master room skin x3 Days",
         },
         {
-          pic: `${baserUrl}streamkar/rewards/noRew.png`,
+          pic: `${baserUrl}streamkar/rewards/MasterMindRoomSkin.png`,
           text: "MasterMind room skin (NEW) x3 Days",
         },
         {
-          pic: `${baserUrl}streamkar/rewards/noRew.png`,
+          pic: `${baserUrl}streamkar/rewards/mastermind.png`,
           text: "MasterMind frame (NEW) x3 Days",
         },
       ],
@@ -275,7 +275,7 @@ export const talentOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/mastermind.png`,
         desc: (
           <span>
             <span>MasterMind frame (New) x5 days</span>
@@ -283,7 +283,7 @@ export const talentOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/MasterMindRoomSkin.png`,
         desc: (
           <span>
             <span>MasterMind room skin (New) x5 days</span>
@@ -305,7 +305,7 @@ export const talentOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/mastermind.png`,
         desc: (
           <span>
             <span>MasterMind frame (New) x3 days</span>
@@ -313,7 +313,7 @@ export const talentOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/MasterMindRoomSkin.png`,
         desc: (
           <span>
             <span>MasterMind room skin (New) x3 days</span>
@@ -335,7 +335,7 @@ export const talentOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/mastermind.png`,
         desc: (
           <span>
             <span>MasterMind frame (New) x1 day</span>
@@ -343,7 +343,7 @@ export const talentOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/MasterMindRoomSkin.png`,
         desc: (
           <span>
             <span>MasterMind room skin (New) x1 day</span>
@@ -366,7 +366,7 @@ export const gifterOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/mastermind.png`,
         desc: (
           <span>
             <span>MasterMind frame (New) x5 days</span>
@@ -374,7 +374,7 @@ export const gifterOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/MasterMindRoomSkin.png`,
         desc: (
           <span>
             <span>MasterMind room skin (New) x5 days</span>
@@ -395,7 +395,7 @@ export const gifterOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/mastermind.png`,
         desc: (
           <span>
             <span>MasterMind frame (New) x3 days</span>
@@ -403,7 +403,7 @@ export const gifterOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/MasterMindRoomSkin.png`,
         desc: (
           <span>
             <span>MasterMind room skin (New) x3 days</span>
@@ -424,7 +424,7 @@ export const gifterOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/mastermind.png`,
         desc: (
           <span>
             <span>MasterMind frame (New) x1 day</span>
@@ -432,7 +432,7 @@ export const gifterOverallRewards = [
         ),
       },
       {
-        pic: `${baserUrl}streamkar/rewards/noRew.png`,
+        pic: `${baserUrl}streamkar/rewards/MasterMindRoomSkin.png`,
         desc: (
           <span>
             <span>MasterMind room skin (New) x1 day</span>
@@ -502,7 +502,6 @@ export var guideContent = {
     ),
     thirdBox: (
       <>
-        <h1 className="h1">Event Gifting</h1>
         <h2 className="h1">Overall</h2>
         <h2 className="h1">For Users</h2>
         <li>In the total ranking, the top 3 users will be rewarded.</li>
@@ -586,7 +585,6 @@ export var guideContent = {
     ),
     thirdBox: (
       <>
-        <h1 className="h1">Event Gifting</h1>
         <h2 className="h1">Overall</h2>
         <h2 className="h1">For Users</h2>
         <li>Total ranking mein, top 3 users ko rewards milein gy.</li>
