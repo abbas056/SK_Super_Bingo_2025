@@ -106,7 +106,6 @@ function VipLuckyWheel() {
         overFlowHidden();
       });
   };
-
   const close = () => {
     setAlert(false);
     overFlowAuto();
@@ -120,9 +119,7 @@ function VipLuckyWheel() {
           <div className="wheel">
             <div className="image-container d-flex al-center jc-center">
               <img className="p-abs w-6vw" style={{ top: "0vw", width: "19vw", zIndex: "1" }} src={vipluckyarrow} alt="" />
-
               <img className="p-abs center" src={vipWheelCenter} alt="" />
-
               <img
                 src={vipluckyWheelInner}
                 alt="Spin the Wheel"

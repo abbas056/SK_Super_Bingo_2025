@@ -54,7 +54,7 @@ function EventProvider({ children }) {
     } catch (_error) {
       setUser({
         uid: 596492375,
-        token: "A1140084B4574F40619D898096BDE0CB59",
+        token: "A133C5E90A8E0149049B9BED8DE1A77EF1",
       });
 
       console.error("Can't get userInfo by window.phone.getUserInfo");

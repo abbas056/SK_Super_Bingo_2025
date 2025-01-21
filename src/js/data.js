@@ -115,8 +115,8 @@ export const eventGifts = [
   },
   {
     id: 2,
-    img: `${baserUrl}streamkar/gifts/40011722.png`,
-    name: "Game World",
+    img: `${baserUrl}streamkar/gifts/40001616.png`,
+    name: "Surprise Box",
     cost: "25k",
   },
   {
