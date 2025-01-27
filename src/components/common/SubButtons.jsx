@@ -1,6 +1,7 @@
 import React from "react";
 
 function SubButtons({ subBtn1name, subBtn2name, subTabs, setSubTabs }) {
+  // States
   const tabSwitch = (id) => {
     let newCat = {
       [subBtn1name]: false,
