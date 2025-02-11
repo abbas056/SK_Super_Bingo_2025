@@ -19,7 +19,6 @@ const App = () => {
   const [loadMore, setLoadMore] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const { userId, userInfo } = useContext(ApiContext);
-
   const [mainTabs, setMainTabs] = useState({
     tab1: true,
     tab2: false,
@@ -92,8 +91,7 @@ const App = () => {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [mainTabs, wheelBtns, userInfo, loadMore, userId]);
-
+  }, [mainTabs, wheelBtns, userInfo, loadMore, userId, recordType]);
   return (
     <div className="App">
       <LanguageBar setLanguage={setLanguage} language={language} />
